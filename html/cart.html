@@ -1,112 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HoliYo</title>
-    <link rel="stylesheet" href="../css/output.css" />
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Favorites</title>
+    <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3B82F6",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#18181B",
+                        "charizard-orange": "#F77837",
+                        "pokeball-red": "#EE1515",
+                        "pikachu-yellow": "#FBC02D",
+                        "dark-slate": "#27272A",
+                        "off-white": "#F5F5F5",
+                        "medium-gray": "#757575",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
 
-
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
 </head>
 
-<body class="min-h-screen flex flex-col text-white font-poppins 
+
+<body class="font-display font-poppins 
              bg-gradient-to-b from-[#1C313F] to-[#B4BFCA]">
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+        <header
+            class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 text-black dark:text-white">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                        <div
+                            class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                        </div>
+                    </div>
+                    <h1 class="text-3xl font-bold text-white select-none">
+                        Holi<span class="text-blue-300">Yo</span>
+                    </h1>
+                </div>
 
-
-    <header class="sticky flex  items-center justify-between px-8 py-5 relative w-full top-0 z-10 justify-between whitespace-nowrap border-b border-white/10 bg-background-light/80">
-
-        <div class="flex items-center gap-3">
-            <div class="relative">
-                <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-                <div class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+            </div>
+            <div class="hidden items-center gap-8 md:flex">
+                <a class="text-sm font-medium leading-normal text-black dark:text-white" href="index.html">Home</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="market.html">Market</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="guide.html">Guide</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="myDeck.html">MyDeck</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="favourite.html">Favourite</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 text-black dark:bg-white/5 dark:text-white">
+                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
+                    <div
+                        class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pokeball-red text-xs font-bold text-white">
+                        3</div>
+                </button>
+            </div>
+        </header>
+        <main class="flex-1 px-4 py-8 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-4xl">
+                <div class="mb-6 flex items-baseline justify-between">
+                    <h1 class="text-3xl font-bold text-black dark:text-white">Your Cart</h1>
+                    <a class="text-sm font-medium text-primary hover:underline" href="#">Continue Shopping</a>
+                </div>
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-start">
+                    <div
+                        class="flex-1 rounded-xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-dark-slate">
+                        <h2 class="mb-4 text-lg font-semibold text-black dark:text-white">Items (3)</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="h-24 w-16 flex-shrink-0 rounded-md bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOD3xbQLVbd3VMCpK562Dlu0SKhQky9MEbX7iXI_kZvTWQYgbl7bW_Y2A6rC0N-TPZgbLj1tv-fRjoqDdDic9XArK2foBszFK21fnUGT1O6KMmzwslqKbOyWIc-jLTsRmhpttqhWGY3pqMId2xXqSRSAoqe-HfUM0rhCUK16Adrs9nD87kgS_UCRX1JGmRmJ4Ug-yEpWg-MtilFaLYn2UbAHGPY2Wwwv_00SipLRfYBEUAuYhQZiPL4v3OifCU2_wFwKli7uP7wBs');">
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-black dark:text-white">Charizard GX</h3>
+                                    <p class="text-sm text-black/60 dark:text-white/60">Sun &amp; Moon: Burning Shadows
+                                    </p>
+                                    <p class="text-sm font-bold text-primary">$19.99</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">remove</span>
+                                    </button>
+                                    <span class="w-8 text-center font-medium text-black dark:text-white">1</span>
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">add</span>
+                                    </button>
+                                </div>
+                                <button
+                                    class="text-black/50 hover:text-pokeball-red dark:text-white/50 dark:hover:text-pokeball-red">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </div>
+                            <hr class="border-black/10 dark:border-white/10" />
+                            <div class="flex items-center gap-4">
+                                <div class="h-24 w-16 flex-shrink-0 rounded-md bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgml4106Jw67FLwPVgryVJPabEgeKBbAQvHcT-2SWsTO3IV0waiU2LbzyQEgPYtLBRDEvYoaRAU2v1a8rrCG3jUD9tzWQtHE21m3HV8LT5SdLrDwp8oJPyDVO1F7C9mROSSd01LAt8P36C6763hh9WJ8keTzT21BPo_b4QRW31_Ll0CSmMUyagqIMRW3dNLW1Jf9zm2Mxf5JAnLnwPZfyv5QRgNVa1SDP1MQrqTVTDQR17sSR4Rf3gScmswFrwk_he_O-Vnfh72vA');">
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-black dark:text-white">Shiny Charizard V</h3>
+                                    <p class="text-sm text-black/60 dark:text-white/60">Shining Fates</p>
+                                    <p class="text-sm font-bold text-primary">$150.00</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">remove</span>
+                                    </button>
+                                    <span class="w-8 text-center font-medium text-black dark:text-white">1</span>
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">add</span>
+                                    </button>
+                                </div>
+                                <button
+                                    class="text-black/50 hover:text-pokeball-red dark:text-white/50 dark:hover:text-pokeball-red">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </div>
+                            <hr class="border-black/10 dark:border-white/10" />
+                            <div class="flex items-center gap-4">
+                                <div class="h-24 w-16 flex-shrink-0 rounded-md bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBT5Cf1S7AkaPTZmMEMpego8iplwG7vLvv-dBnioUCSBFP2Uby6cn6VJwFCm5_j0poojjkLbg6oTjLUWshXTAbC30il5ng0c5dnSbGYc2s-wDs60U9Q_oqBKtfWMwIzWAEw9dMx1W2X_5FegBYg4dpOHGWZeQslpgWl-ICSI9A9DPJfTTgAekeeSt5NJ7JVA6-2Oc9rmrBx34ctJOdXnVid2sUQ5nEJe36TQmu7EYJ3ixKWjjz3NTO9ObioNJMACnLQodsu0mFhm6s');">
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-black dark:text-white">Charizard (Base Set)</h3>
+                                    <p class="text-sm text-black/60 dark:text-white/60">Base Set</p>
+                                    <p class="text-sm font-bold text-primary">$499.50</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">remove</span>
+                                    </button>
+                                    <span class="w-8 text-center font-medium text-black dark:text-white">2</span>
+                                    <button
+                                        class="flex h-8 w-8 items-center justify-center rounded-md bg-black/5 text-black/80 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10">
+                                        <span class="material-symbols-outlined text-xl">add</span>
+                                    </button>
+                                </div>
+                                <button
+                                    class="text-black/50 hover:text-pokeball-red dark:text-white/50 dark:hover:text-pokeball-red">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-80">
+                        <div
+                            class="rounded-xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-dark-slate">
+                            <h2 class="mb-4 text-lg font-semibold text-black dark:text-white">Order Summary</h2>
+                            <div class="space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-black/60 dark:text-white/60">Subtotal</span>
+                                    <span class="font-medium text-black dark:text-white">$1169.49</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-black/60 dark:text-white/60">Shipping</span>
+                                    <span class="font-medium text-black dark:text-white">$5.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-black/60 dark:text-white/60">Tax</span>
+                                    <span class="font-medium text-black dark:text-white">$93.56</span>
+                                </div>
+                            </div>
+                            <hr class="my-4 border-black/10 dark:border-white/10" />
+                            <div class="flex justify-between">
+                                <span class="text-lg font-bold text-black dark:text-white">Total</span>
+                                <span class="text-lg font-bold text-primary">$1268.05</span>
+                            </div>
+                            <button
+                                class="mt-6 flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary py-3 text-sm font-bold leading-normal tracking-[0.015em] text-white transition hover:opacity-90">
+                                <span class="material-symbols-outlined">lock</span>
+                                <span>Proceed to Checkout</span>
+                            </button>
+                            <p class="mt-4 text-center text-xs text-black/50 dark:text-white/50">Secure payment
+                                processing</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h1 class="text-3xl font-bold text-white select-none">
-                Holi<span class="text-blue-300">Yo</span>
-            </h1>
-        </div>
+        </main>
+    </div>
 
-        <nav class="hidden md:flex flex-grow justify-center text-lg gap-10 font-medium">
-            <a href="./index.html" class="hover:text-amber-400 transition">Home</a>
-            <a href="./guide.html" class="hover:text-amber-400 transition">Guide</a>
-            <a href="./market.html" class="hover:text-amber-400 transition">Market</a>
-            <a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a>
-            <a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a>
-        </nav>
-
-        <div class="flex items-center gap-4">
-            <a href="./cart.html" class="hover:text-amber-400 transition text-2xl">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </a>
-
-            <label for="hamburger" class="cursor-pointer text-3xl md:hidden">
-                <i class="fa-solid fa-bars"></i>
-            </label>
-        </div>
-
-        <input type="checkbox" id="hamburger" class="hidden peer" />
-        <nav class="nav-container fixed inset-0 bg-blue-950/95 flex flex-col items-center justify-center gap-6 text-lg
-           scale-0 peer-checked:scale-100 transition-transform duration-300 md:hidden">
-            <ul class="flex flex-col items-center gap-6">
-                <li><a href="./index.html" class="hover:text-amber-400 transition">Home</a></li>
-                <li><a href="./guide.html" class="hover:text-amber-400 transition">Guide</a></li>
-                <li><a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a></li>
-                <li><a href="./market.html" class="hover:text-amber-400 transition">Market</a></li>
-                <li><a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a></li>
-                <li><a href="./cart.html" class="hover:text-amber-400 transition text-2xl"><i
-                            class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-
-    <main class="flex-grow flex flex-col items-center justify-center text-center px-6 py-16">
-        <h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p>
-    </main>
-
-    <footer class="text-center py-6 border-t border-blue-400/30 text-black text-sm">
-        © 2025 HoliYo — Experience is always embedded in a physical experience.
-    </footer>
-
-    <script src="../js/app.js">
-
-    </script>
 </body>
 
 </html>

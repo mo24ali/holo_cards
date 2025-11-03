@@ -1,112 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HoliYo</title>
-    <link rel="stylesheet" href="../css/output.css" />
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>My Favorites</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style type="text/tailwindcss">
+        :root {
+            --primary: #3B82F6;
+            --background-light: #f8f6f5;
+            --background-dark: #18181B;
+            --charizard-orange: #F77837;
+            --pokeball-red: #EE1515;
+            --pikachu-yellow: #FBC02D;
+            --dark-slate: #27272A;
+            --off-white: #F5F5F5;
+            --medium-gray: #757575;
+            --border-default: 0.25rem;
+            --border-lg: 0.5rem;
+            --border-xl: 0.75rem;
+            --border-full: 9999px;
+            --font-display: "Spline Sans", sans-serif;
+            }
+
+            .bg-primary { background-color: var(--primary); }
+            .text-primary { color: var(--primary); }
+            .bg-pokeball-red { background-color: var(--pokeball-red); }
+            .bg-dark-slate { background-color: var(--dark-slate); }
+            .bg-background-light { background-color: var(--background-light); }
+            .bg-background-dark { background-color: var(--background-dark); }
+            .font-display { font-family: var(--font-display); }
+            .material-symbols-outlined {
+                font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+            }
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .material-symbols-outlined.fill-icon {
+                font-variation-settings: 'FILL' 1;
+            }
+    </style>
 
 
 </head>
 
-<body class="min-h-screen flex flex-col text-white font-poppins 
+<body class="font-display font-poppins 
              bg-gradient-to-b from-[#1C313F] to-[#B4BFCA]">
-
-
-    <header class="sticky flex  items-center justify-between px-8 py-5 relative w-full top-0 z-10 justify-between whitespace-nowrap border-b border-white/10 bg-background-light/80">
-
-        <div class="flex items-center gap-3">
-            <div class="relative">
-                <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-                <div class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+     <header
+            class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 text-black dark:text-white">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                        <div
+                            class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                        </div>
+                    </div>
+                    <h1 class="text-3xl font-bold text-white select-none">
+                        Holi<span class="text-blue-300">Yo</span>
+                    </h1>
                 </div>
+
             </div>
-            <h1 class="text-3xl font-bold text-white select-none">
-                Holi<span class="text-blue-300">Yo</span>
-            </h1>
+            <div class="hidden items-center gap-8 md:flex">
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="index.html">Home</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="market.html">Market</a>
+                <a class="text-sm font-medium leading-normal text-black dark:text-white"
+                    href="guide.html">Guide</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="myDeck.html">MyDeck</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="favourite.html">Favourite</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 text-black dark:bg-white/5 dark:text-white">
+                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
+                    <div
+                        class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pokeball-red text-xs font-bold text-white">
+                        3</div>
+                </button>
+            </div>
+        </header>
+        <div class="flex flex-1">
+            <aside class="sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6">
+                <div class="flex h-full flex-col gap-6">
+                    <h1 class="text-base font-medium leading-normal text-black dark:text-white">Table of Contents</h1>
+                    <label class="flex h-12 w-full flex-col">
+                        <div class="flex h-full w-full flex-1 items-stretch rounded-lg">
+                            <div
+                                class="flex items-center justify-center rounded-l-lg border-r-0 bg-black/5 pl-4 text-black/60 dark:bg-white/5 dark:text-white/60">
+                                <span class="material-symbols-outlined text-2xl">search</span>
+                            </div>
+                            <input
+                                class="form-input h-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg border-none bg-black/5 px-4 text-base font-normal leading-normal text-black placeholder:text-black/60 focus:outline-0 focus:ring-0 dark:bg-white/5 dark:text-white dark:placeholder:text-white/60"
+                                placeholder="Search rules..." value="" />
+                        </div>
+                    </label>
+                    <nav class="flex flex-col gap-2">
+                        <a class="rounded-lg bg-black/5 px-3 py-2 text-sm font-medium text-black dark:bg-white/5 dark:text-white"
+                            href="#">1. Introduction</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">2. Game Setup</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">3. Parts of a Card</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">4. Turn Structure</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">5. Attacking</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">6. Special Conditions</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">7. Winning the Game</a>
+                        <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
+                            href="#">8. Advanced Rules</a>
+                    </nav>
+                </div>
+            </aside>
+            <main class="flex-1 p-6 lg:p-8">
+                <div class="mx-auto max-w-4xl">
+                    <div class="mb-8">
+                        <h1 class="text-4xl font-bold text-black dark:text-white">Pokémon Trading Card Game Rules</h1>
+                        <p class="mt-2 text-lg text-black/60 dark:text-white/60">Your comprehensive guide to becoming a
+                            Pokémon TCG Master.</p>
+                    </div>
+                    <div
+                        class="prose prose-lg dark:prose-invert max-w-none prose-h2:mb-4 prose-h2:mt-10 prose-h2:text-2xl prose-h2:font-bold prose-p:leading-relaxed prose-li:my-1 prose-a:text-primary hover:prose-a:underline">
+                        <section id="introduction">
+                            <h2>1. Introduction</h2>
+                            <p>Welcome to the world of the Pokémon Trading Card Game! This is a game of strategy and
+                                luck where two players take on the roles of Pokémon Trainers, using their Pokémon to
+                                battle each other. The goal is to knock out your opponent's Pokémon to claim Prize
+                                cards. The first player to take all of their Prize cards wins!</p>
+                        </section>
+                        <section id="game-setup">
+                            <h2>2. Game Setup</h2>
+                            <p>Before you begin, you and your opponent need to set up the play area. Follow these steps:
+                            </p>
+                            <ol>
+                                <li>Shuffle your 60-card deck and draw a hand of 7 cards.</li>
+                                <li>Check your hand for a Basic Pokémon. If you have one, place it face down as your
+                                    Active Pokémon. If not, show your hand to your opponent, shuffle it back into your
+                                    deck, and draw 7 new cards. Your opponent may draw one extra card.</li>
+                                <li>Place up to 5 more Basic Pokémon face down on your Bench.</li>
+                                <li>Place the top 6 cards of your deck face down to the side as your Prize cards.</li>
+                                <li>Flip a coin to decide who goes first.</li>
+                                <li>Both players flip their Active and Benched Pokémon face up. The game begins!</li>
+                            </ol>
+                            <div
+                                class="my-6 rounded-xl border border-black/10 bg-white p-4 shadow-lg dark:border-white/10 dark:bg-dark-slate">
+                                <img alt="Diagram of the Pokemon TCG playmat setup" class="w-full rounded-lg"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWdThWYc-cMe6psrIUAGoFs_vDQ1YmY_My5W4H6KzgK1jmr4rG1F21PjD9TYdF2Z4vJcTBA3Oj5qiOeFBABrb0b01QkHd2nVexdlZDMo9sBL37Ln6A2EAl2AmFU3kY4D4ndn3nB2qi6X8ytl9GfVXqyzhZTNfJIo2ebop3H6iMgvC_9Eb01iMOpQGkBacPmYwZRNHBNye6e7zDrzUNgbdDa1rl3-2wbX5_18Ot4IsYUbvEBfDppN2IbZ2h1dYbl-pc8N5DmCewyPE" />
+                                <p class="mt-2 text-center text-sm text-black/60 dark:text-white/60">A standard play
+                                    area layout showing the Deck, Discard Pile, Active Pokémon, Bench, and Prize Cards.
+                                </p>
+                            </div>
+                        </section>
+                        <section id="parts-of-a-card">
+                            <h2>3. Parts of a Card</h2>
+                            <p>Understanding a Pokémon card is key to playing the game. Each card has several important
+                                parts:</p>
+                            <ul>
+                                <li><strong>Name:</strong> The Pokémon's name is at the top.</li>
+                                <li><strong>HP (Hit Points):</strong> This number indicates how much damage the Pokémon
+                                    can take before it is Knocked Out.</li>
+                                <li><strong>Type:</strong> The symbol in the top right corner represents the Pokémon's
+                                    type (e.g., Fire, Water, Grass).</li>
+                                <li><strong>Attacks:</strong> These are the moves the Pokémon can use. They list the
+                                    Energy cost and the damage they deal.</li>
+                                <li><strong>Weakness and Resistance:</strong> These show if the Pokémon takes extra
+                                    damage from or less damage against certain types.</li>
+                                <li><strong>Retreat Cost:</strong> This is the amount of Energy you must discard to move
+                                    this Pokémon from the Active Spot to the Bench.</li>
+                            </ul>
+                        </section>
+                        <section id="turn-structure">
+                            <h2>4. Turn Structure</h2>
+                            <p>A player's turn consists of three main phases:</p>
+                            <ol>
+                                <li><strong>Draw a card.</strong> This is how you start every turn.</li>
+                                <li><strong>Take actions.</strong> You can do any of the following in any order:
+                                    <ul>
+                                        <li>Play Basic Pokémon onto your Bench (as many as you like).</li>
+                                        <li>Evolve your Pokémon (as many as you like).</li>
+                                        <li>Attach one Energy card from your hand to one of your Pokémon.</li>
+                                        <li>Play Trainer cards.</li>
+                                        <li>Use a Pokémon's Ability (as many as you like).</li>
+                                        <li>Retreat your Active Pokémon (once per turn).</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Attack.</strong> This is the final action of your turn. If your Active
+                                    Pokémon attacks, your turn ends.</li>
+                            </ol>
+                        </section>
+                    </div>
+                </div>
+            </main>
         </div>
+    </div>
 
-        <nav class="hidden md:flex flex-grow justify-center text-lg gap-10 font-medium">
-            <a href="./index.html" class="hover:text-amber-400 transition">Home</a>
-            <a href="./guide.html" class="hover:text-amber-400 transition">Guide</a>
-            <a href="./market.html" class="hover:text-amber-400 transition">Market</a>
-            <a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a>
-            <a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a>
-        </nav>
-
-        <div class="flex items-center gap-4">
-            <a href="./cart.html" class="hover:text-amber-400 transition text-2xl">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </a>
-
-            <label for="hamburger" class="cursor-pointer text-3xl md:hidden">
-                <i class="fa-solid fa-bars"></i>
-            </label>
-        </div>
-
-        <input type="checkbox" id="hamburger" class="hidden peer" />
-        <nav class="nav-container fixed inset-0 bg-blue-950/95 flex flex-col items-center justify-center gap-6 text-lg
-           scale-0 peer-checked:scale-100 transition-transform duration-300 md:hidden">
-            <ul class="flex flex-col items-center gap-6">
-                <li><a href="./index.html" class="hover:text-amber-400 transition">Home</a></li>
-                <li><a href="./guide.html" class="hover:text-amber-400 transition">Guide</a></li>
-                <li><a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a></li>
-                <li><a href="./market.html" class="hover:text-amber-400 transition">Market</a></li>
-                <li><a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a></li>
-                <li><a href="./cart.html" class="hover:text-amber-400 transition text-2xl"><i
-                            class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-
-    <main class="flex-grow flex flex-col items-center justify-center text-center px-6 py-16">
-        <h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p>
-    </main>
-
-    <footer class="text-center py-6 border-t border-blue-400/30 text-black text-sm">
-        © 2025 HoliYo — Experience is always embedded in a physical experience.
-    </footer>
-
-    <script src="../js/app.js">
-
-    </script>
 </body>
 
 </html>

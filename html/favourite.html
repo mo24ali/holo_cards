@@ -1,112 +1,405 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HoliYo</title>
-    <link rel="stylesheet" href="../css/output.css" />
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Favorites</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3B82F6",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#18181B",
+                        "charizard-orange": "#F77837",
+                        "pokeball-red": "#EE1515",
+                        "pikachu-yellow": "#FBC02D",
+                        "dark-slate": "#27272A",
+                        "off-white": "#F5F5F5",
+                        "medium-gray": "#757575",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
 
-    <script src="https://kit.fontawesome.com/a2e0c5b5f5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
 </head>
 
-<body class="min-h-screen flex flex-col text-white font-poppins 
+<body class="font-display font-poppins 
              bg-gradient-to-b from-[#1C313F] to-[#B4BFCA]">
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+        <header
+            class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 text-black dark:text-white">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                        <div
+                            class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                        </div>
+                    </div>
+                    <h1 class="text-3xl font-bold text-white select-none">
+                        Holi<span class="text-blue-300">Yo</span>
+                    </h1>
+                </div>
 
-
-    <header class="sticky flex  items-center justify-between px-8 py-5 relative w-full top-0 z-10 justify-between whitespace-nowrap border-b border-white/10 bg-background-light/80">
-
-        <div class="flex items-center gap-3">
-            <div class="relative">
-                <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-                <div class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+            </div>
+            <div class="hidden items-center gap-8 md:flex">
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="index.html">Home</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="market.html">Market</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="guide.html">Guide</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="myDeck.html">MyDeck</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white"
+                    href="favourite.html">Favourite</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 text-black dark:bg-white/5 dark:text-white">
+                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
+                    <div
+                        class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pokeball-red text-xs font-bold text-white">
+                        3</div>
+                </button>
+            </div>
+        </header>
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="mb-6 flex items-center justify-between">
+                <h1 class="text-xl font-bold text-black dark:text-white">My Favorites</h1>
+                <p class="text-sm text-black/60 dark:text-white/60">6 favorited cards</p>
+            </div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">Charizard VMAX</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">330</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="Charizard VMAX pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWdThWYc-cMe6psrIUAGoFs_vDQ1YmY_My5W4H6KzgK1jmr4rG1F21PjD9TYdF2Z4vJcTBA3Oj5qiOeFBABrb0b01QkHd2nVexdlZDMo9sBL37Ln6A2EAl2AmFU3kY4D4ndn3nB2qi6X8ytl9GfVXqyzhZTNfJIo2ebop3H6iMgvC_9Eb01iMOpQGkBacPmYwZRNHBNye6e7zDrzUNgbdDa1rl3-2wbX5_18Ot4IsYUbvEBfDppN2IbZ2h1dYbl-pc8N5DmCewyPE');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">G-Max Wildfire</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">300</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">Charizard GX</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">250</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="Charizard GX pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOD3xbQLVbd3VMCpK562Dlu0SKhQky9MEbX7iXI_kZvTWQYgbl7bW_Y2A6rC0N-TPZgbLj1tv-fRjoqDdDic9XArK2foBszFK21fnUGT1O6KMmzwslqKbOyWIc-jLTsRmhpttqhWGY3pqMId2xXqSRSAoqe-HfUM0rhCUK16Adrs9nD87kgS_UCRX1JGmRmJ4Ug-yEpWg-MtilFaLYn2UbAHGPY2Wwwv_00SipLRfYBEUAuYhQZiPL4v3OifCU2_wFwKli7uP7wBs');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">Crimson Storm</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">300</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">Shiny Charizard V</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">220</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="Shiny Charizard V pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgml4106Jw67FLwPVgryVJPabEgeKBbAQvHcT-2SWsTO3IV0waiU2LbzyQEgPYtLBRDEvYoaRAU2v1a8rrCG3jUD9tzWQtHE21m3HV8LT5SdLrDwp8oJPyDVO1F7C9mROSSd01LAt8P36C6763hh9WJ8keTzT21BPo_b4QRW31_Ll0CSmMUyagqIMRW3dNLW1Jf9zm2Mxf5JAnLnwPZfyv5QRgNVa1SDP1MQrqTVTDQR17sSR4Rf3gScmswFrwk_he_O-Vnfh72vA');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">Royal Blaze</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">100+</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">M Charizard EX</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">220</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="M Charizard EX pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeUx4HSy3aky7AaT2kKXln7fjAatWrHPVz3kVuJKiC5r9aZyNPc1MTMHv0T93BCquxSFT9FLzZ_2s2ET_XCCxNGytFXv69bxpwApVmDs6jmesByw47WK5O1sbXT_BSLPE8mENRAgN0ZAkGGWJrv_vQA--LX2f9QkdRpdsWHz9SPt86dAQ7IzCuDOnvrG8cOiUWGKmRPbpzIPMM20mvuMp3e0Ik2q8O0P32Oe3YxNGwxnQ2JYdCBMM7XXPK4wab692C4jGIx2zCSK0');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">Crimson Dive</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">300</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">Charizard EX</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">180</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="Charizard EX pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD86c9ybYeHHdmTTHxCwqugCjQ99uT-R5v2XNhaybt3G5W1McKpNtWB83-KiQe3hrm_kFLJUlCA0kCAedXl7v8VVcGTo7va0z272-i0iFKISSaLLVxBmNRhLa3Yv_rJsHxt6dhMC12nbr6dbMUxHLinO6YJxsU6HIqjZDtuMuY76fg8N9-h756lCCEfLhPjW1EK1zPvhke-uppK4ZqQlWAd4giqekzfXFaaQJDs_q5waQDeikvcuFuZM-QZNauPzxt4TfitKrIW6ZY');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">Combustion Blast</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">150</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative flex cursor-pointer flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate dark:hover:border-primary/50">
+                    <button
+                        class="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80">
+                        <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+                    </button>
+                    <div class="flex items-center justify-between bg-zinc-100 px-4 py-2 dark:bg-zinc-800">
+                        <h3 class="text-lg font-bold text-black dark:text-white">Charizard</h3>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm font-semibold text-red-500">HP</span>
+                            <span class="text-lg font-bold text-black dark:text-white">120</span>
+                        </div>
+                    </div>
+                    <div class="aspect-[3/4] w-full p-4">
+                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
+                            data-alt="Base set Charizard pokemon card image"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBT5Cf1S7AkaPTZmMEMpego8iplwG7vLvv-dBnioUCSBFP2Uby6cn6VJwFCm5_j0poojjkLbg6oTjLUWshXTAbC30il5ng0c5dnSbGYc2s-wDs60U9Q_oqBKtfWMwIzWAEw9dMx1W2X_5FegBYg4dpOHGWZeQslpgWl-ICSI9A9DPJfTTgAekeeSt5NJ7JVA6-2Oc9rmrBx34ctJOdXnVid2sUQ5nEJe36TQmu7EYJ3ixKWjjz3NTO9ObioNJMACnLQodsu0mFhm6s');">
+                        </div>
+                    </div>
+                    <div class="mt-auto flex flex-col gap-3 border-t border-black/10 p-4 dark:border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500"><span
+                                        class="material-symbols-outlined text-base text-white">local_fire_department</span>
+                                </div>
+                                <p class="text-sm font-medium text-black dark:text-white">Fire Spin</p>
+                            </div>
+                            <p class="text-sm font-bold text-black dark:text-white">100</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-medium text-black/60 dark:text-white/60">Retreat Cost</p>
+                            <div class="flex gap-1">
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                                <div
+                                    class="flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 dark:bg-gray-600">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-black dark:text-white">radio_button_unchecked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h1 class="text-3xl font-bold text-white select-none">
-                Holi<span class="text-blue-300">Yo</span>
-            </h1>
-        </div>
-
-        <nav class="hidden md:flex flex-grow justify-center text-lg gap-10 font-medium">
-            <a href="./index.html" class="hover:text-amber-400 transition">Home</a>
-            <a href="./guide.html" class="hover:text-amber-400 transition">Guide</a>
-            <a href="./market.html" class="hover:text-amber-400 transition">Market</a>
-            <a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a>
-            <a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a>
-        </nav>
-
-        <div class="flex items-center gap-4">
-            <a href="./cart.html" class="hover:text-amber-400 transition text-2xl">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </a>
-
-            <label for="hamburger" class="cursor-pointer text-3xl md:hidden">
-                <i class="fa-solid fa-bars"></i>
-            </label>
-        </div>
-
-        <input type="checkbox" id="hamburger" class="hidden peer" />
-        <nav class="nav-container fixed inset-0 bg-blue-950/95 flex flex-col items-center justify-center gap-6 text-lg
-           scale-0 peer-checked:scale-100 transition-transform duration-300 md:hidden">
-            <ul class="flex flex-col items-center gap-6">
-                <li><a href="./index.html" class="hover:text-amber-400 transition">Home</a></li>
-                <li><a href="./guide.html" class="hover:text-amber-400 transition">Guide</a></li>
-                <li><a href="./favourite.html" class="hover:text-amber-400 transition">Favourite</a></li>
-                <li><a href="./market.html" class="hover:text-amber-400 transition">Market</a></li>
-                <li><a href="./mydeck.html" class="hover:text-amber-400 transition">My Deck</a></li>
-                <li><a href="./cart.html" class="hover:text-amber-400 transition text-2xl"><i
-                            class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-
-    <main class="flex-grow flex flex-col items-center justify-center text-center px-6 py-16">
-        <h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p><h2 class="text-4xl font-bold text-blue-300 mb-4">Welcome to HoliYo</h2>
-        <p class="text-gray-200 max-w-2xl">
-            Experience the world of collectible digital cards — where every digital adventure comes alive.
-        </p>
-    </main>
-
-    <footer class="text-center py-6 border-t border-blue-400/30 text-black text-sm">
-        © 2025 HoliYo — Experience is always embedded in a physical experience.
-    </footer>
-
-    <script src="../js/app.js">
-
-    </script>
+        </main>
+    </div>
 </body>
 
 </html>
