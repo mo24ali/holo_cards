@@ -187,34 +187,9 @@
                 <h1 class="text-xl font-bold text-black dark:text-white">Featured Cards</h1>
                 <p class="text-sm text-black/60 dark:text-white/60">Showing 6 of 1,204 cards</p>
             </div>
-
-
-
-
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-                <div
-                    class=" relative flex flex-col rounded-xl border border-black/10 bg-black shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate">
-                    <div class="aspect-[3/4] w-full p-4">
-                        <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat"
-                            style="background-image: url('../assets/charizard_cards/charizard_v.png');"></div>
-                    </div>
-                    <div class="flex flex-col gap-3 p-4 pt-0">
-                        <div class="flex items-start justify-between">
-                            <h3 class="text-lg font-bold text-black dark:text-white">Charizard VMAX</h3>
-                            <div class="flex items-center gap-1">
-                                <span class="text-sm font-semibold text-red-500">HP</span>
-                                <span class="text-lg font-bold text-black dark:text-white">330</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <p class="text-2xl font-bold text-primary">$125.50</p>
-                            <button
-                                class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-primary/90">
-                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <!-- market section -->
+            <div id="market" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                <!-- filled dynamically via JS logic -->
             </div>
             <div class="mt-8 flex items-center justify-center gap-2">
                 <button
@@ -234,9 +209,16 @@
                         class="material-symbols-outlined text-xl">chevron_right</span></button>
             </div>
         </main>
+        <footer>
+
+        </footer>
     </div>
     </div>
 
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+    <script src="../js/market.js"></script>
 </body>
 
 </html>
