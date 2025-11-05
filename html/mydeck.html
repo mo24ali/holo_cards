@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 
- <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>My Favorites</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#3B82F6",
-                        "background-light": "#f8f6f5",
-                        "background-dark": "#18181B",
-                        "charizard-orange": "#F77837",
-                        "pokeball-red": "#EE1515",
-                        "pikachu-yellow": "#FBC02D",
-                        "dark-slate": "#27272A",
-                        "off-white": "#F5F5F5",
-                        "medium-gray": "#757575",
-                    },
-                    fontFamily: {
-                        "display": ["Spline Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>My Deck</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#3B82F6",
+                    "background-light": "#f8f6f5",
+                    "background-dark": "#18181B",
+                    "charizard-orange": "#F77837",
+                    "pokeball-red": "#EE1515",
+                    "pikachu-yellow": "#FBC02D",
+                    "dark-slate": "#27272A",
+                    "off-white": "#F5F5F5",
+                    "medium-gray": "#757575",
+                },
+                fontFamily: {
+                    "display": ["Spline Sans", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
                 },
             },
-        }
-    </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
 
-        .material-symbols-outlined.fill-icon {
-            font-variation-settings: 'FILL' 1;
-        }
-    </style>
+    .material-symbols-outlined.fill-icon {
+        font-variation-settings: 'FILL' 1;
+    }
+</style>
 </head>
 
 <body class="font-display font-poppins 
@@ -69,7 +68,8 @@
 
             </div>
             <div class="hidden items-center gap-8 md:flex">
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="index.html">Home</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="index.html">Home</a>
                 <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
                     href="market.html">Market</a>
                 <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
@@ -80,52 +80,52 @@
                     href="favourite.html">Favourite</a>
             </div>
             <div class="bg-gray-100  flex items-center justify-center bg-blur-sm">
-            
-            <button id="cartTrigger"
-                class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
-                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-                <span
-                    class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
-            </button>
 
-            
-            <div id="cart"
-                class="fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l-4 border-blue-500 bg-white shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
+                <button id="cartTrigger"
+                    class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
 
-                <div
-                    class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-                        <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
-                    </div>
-                    <button id="btnClose"
-                        class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
-                        Close
-                    </button>
-                </div>
-                <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-                    <!-- Blank space to add the added items to the cart -->
-                </ul>
-                
-                <div class="p-5 bg-white border-t shadow-inner">
-                    <div class="flex items-center justify-between mb-3">
-                        <p class="text-gray-700 font-semibold">Total:</p>
-                        <span id="cart-total" class="text-lg font-bold text-blue-600">$0.00</span>
-                    </div>
 
-                    <div class="flex flex-col gap-2">
-                        <button id="btnCheckout"
-                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
-                            Checkout
+                <div id="cart"
+                    class="fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l-4 border-blue-500 bg-white shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
+
+                    <div
+                        class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                            <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
+                        </div>
+                        <button id="btnClose"
+                            class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
+                            Close
                         </button>
-                        <button id="btnWithdraw"
-                            class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
-                            Withdraw
-                        </button>
+                    </div>
+                    <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
+                        <!-- Blank space to add the added items to the cart -->
+                    </ul>
+
+                    <div class="p-5 bg-white border-t shadow-inner">
+                        <div class="flex items-center justify-between mb-3">
+                            <p class="text-gray-700 font-semibold">Total:</p>
+                            <span id="cart-total" class="text-lg font-bold text-blue-600">$0.00</span>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <button id="btnCheckout"
+                                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                Checkout
+                            </button>
+                            <button id="btnWithdraw"
+                                class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
+                                Withdraw
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </header>
         <div class="flex flex-1">
             <aside class="sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6">
@@ -283,8 +283,73 @@
                 </div>
             </main>
         </div>
+        <footer class="bg-gray-950 border-t   border-gray-800 py-12 px-4 sm:px-10 mt-16  ">
+            <div class="max-w-7xl mx-auto">
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 ">
+
+                    <div class="md:col-span-1">
+                        <a href="/" class="flex items-center gap-3 mb-4">
+
+                            <div class="flex items-center gap-3">
+                                <div class="relative">
+                                    <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                                    <div
+                                        class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                                    </div>
+                                </div>
+                                <h1 class="text-3xl font-bold text-white select-none">
+                                    Holi<span class="text-blue-300">Yo</span>
+                                </h1>
+                            </div>
+                        </a>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Collect legendary cards, master the elements, and forge your destiny in the ultimate fantasy
+                            card battle.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Game</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Play Now</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">My Deck</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Leaderboards</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Learn</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Beginner Guide</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Card Rules</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Patch Notes</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Support</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Contact Us</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Report Bug</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Terms of Service</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </footer>
+
     </div>
     <script src="../js/app.js"></script>
+
 </body>
 
 </html>

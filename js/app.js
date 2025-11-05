@@ -11,3 +11,5 @@ closeCartBtn.addEventListener('click', () => {
     cartPanel.classList.remove('translate-x-0');
     cartPanel.classList.add('translate-x-full');
 });
+
+let favorites = []
