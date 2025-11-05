@@ -84,15 +84,53 @@
                 <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
                     href="favourite.html">Favourite</a>
             </div>
-            <div class="flex items-center gap-4">
-                <button
-                    class="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 text-black dark:bg-white/5 dark:text-white">
-                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
-                    <div
-                        class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pokeball-red text-xs font-bold text-white">
-                        3</div>
-                </button>
+            <div class="bg-gray-100  flex items-center justify-center bg-blur-sm">
+            
+            <button id="cartTrigger"
+                class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
+                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                <span
+                    class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+
+            
+            <div id="cart"
+                class="fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l-4 border-blue-500 bg-white shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
+
+                <div
+                    class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                        <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
+                    </div>
+                    <button id="btnClose"
+                        class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
+                        Close
+                    </button>
+                </div>
+                <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
+                    <!-- Blank space to add the added items to the cart -->
+                </ul>
+                
+                <div class="p-5 bg-white border-t shadow-inner">
+                    <div class="flex items-center justify-between mb-3">
+                        <p class="text-gray-700 font-semibold">Total:</p>
+                        <span id="cart-total" class="text-lg font-bold text-blue-600">$0.00</span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <button id="btnCheckout"
+                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
+                            Checkout
+                        </button>
+                        <button id="btnWithdraw"
+                            class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
+                            Withdraw
+                        </button>
+                    </div>
+                </div>
             </div>
+        </div>
         </header>
         <div class="flex flex-1">
             <aside class="sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6">
@@ -210,7 +248,7 @@
             </main>
         </div>
     </div>
-
+    <script src="../js/app.js"></script>
 </body>
 
 </html>

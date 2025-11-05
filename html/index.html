@@ -1,199 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="dark">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Favorites</title>
-    <!-- the used CDNs -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Favorites</title>
 
-    <style type="text/tailwindcss">
-        :root {
-            --primary: #3B82F6;
-            --background-light: #f8f6f5;
-            --background-dark: #18181B;
-            --charizard-orange: #F77837;
-            --pokeball-red: #EE1515;
-            --pikachu-yellow: #FBC02D;
-            --dark-slate: #27272A;
-            --off-white: #F5F5F5;
-            --medium-gray: #757575;
-            --border-default: 0.25rem;
-            --border-lg: 0.5rem;
-            --border-xl: 0.75rem;
-            --border-full: 9999px;
-            --font-display: "Spline Sans", sans-serif;
-            }
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
-            .bg-primary { background-color: var(--primary); }
-            .text-primary { color: var(--primary); }
-            .bg-pokeball-red { background-color: var(--pokeball-red); }
-            .bg-dark-slate { background-color: var(--dark-slate); }
-            .bg-background-light { background-color: var(--background-light); }
-            .bg-background-dark { background-color: var(--background-dark); }
-            .font-display { font-family: var(--font-display); }
-            .material-symbols-outlined {
-                font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
-            }
+  <style type="text/tailwindcss">
+    :root {
+      --primary: #3B82F6;
+      --background-dark: #18181B;
+      --pokeball-red: #EE1515;
+      --font-display: "Spline Sans", sans-serif;
+    }
 
-                .card {
-                    transition: transform 0.5s ease, box-shadow 0.3s ease;
-                    transform-origin: center;
-                    }
+    .font-display { font-family: var(--font-display); }
 
-                    .card img {
-                    pointer-events: none;
-                    }
+    .card {
+      transition: transform 0.5s ease, box-shadow 0.4s ease;
+      transform-origin: center;
+    }
 
-                    .deck {
-                    perspective: 1000px;
-                    }
+    /* 🔥 Add smooth floating animation to all cards */
+    .card img {
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
+    }
 
-                    .deck:hover .top-card {
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-                    }
-                    .carousal{
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
 
-                    }
-                    .group{
+    /* 💫 Deck hover effect — 3D rotation */
+    .deck {
+      perspective: 1000px;
+    }
 
-                    }
-         
-                    .material-symbols-outlined {
-                        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-                    }
+    .deck:hover .top-card {
+      transform: rotateY(15deg) rotateX(5deg) translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
 
-                    .material-symbols-outlined.fill-icon {
-                        font-variation-settings: 'FILL' 1;
-                    }
-                    .swiper {
-                            width: 600px;
-                            height: 300px;
-                            }
-    </style>
+    /* Swiper responsive styling */
+    .swiper {
+      width: 100%;
+      max-width: 900px;
+      height: 340px;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
-<body class="font-display font-poppins 
-             bg-gradient-to-b from-[#1C313F] to-[#B4BFCA]">
-    <div class="relative flex h-auto min-h-screen w-full flex-col">
-        <header
-            class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-4 text-black dark:text-white">
-                <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-                        <div
-                            class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
-                        </div>
-                    </div>
-                    <h1 class="text-3xl font-bold text-white select-none">
-                        Holi<span class="text-blue-300">Yo</span>
-                    </h1>
-                </div>
+<body class="font-display bg-gradient-to-b from-[#1C313F] to-[#B4BFCA] text-white">
+  <div class="flex flex-col min-h-screen w-full">
 
+    <!-- HEADER -->
+    <header class="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-background-dark/80 px-6 py-4 backdrop-blur-lg">
+      <h1 class="text-3xl font-bold select-none">Holi<span class="text-blue-400">Yo</span></h1>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm hover:text-blue-400 transition">Home</a>
+        <a href="market.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Market</a>
+        <a href="guide.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Guide</a>
+        <a href="myDeck.html" class="text-sm text-gray-300 hover:text-blue-400 transition">MyDeck</a>
+        <a href="favourite.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Favourite</a>
+      </nav>
+
+      <div class="bg-gray-100  flex items-center justify-center bg-blur-sm">
+            
+            <button id="cartTrigger"
+                class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
+                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                <span
+                    class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+
+            
+            <div id="cart"
+                class="fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l-4 border-blue-500 bg-white shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
+
+                <div
+                    class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                        <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
+                    </div>
+                    <button id="btnClose"
+                        class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
+                        Close
+                    </button>
+                </div>
+                <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
+                    <!-- Blank space to add the added items to the cart -->
+                </ul>
+                
+                <div class="p-5 bg-white border-t shadow-inner">
+                    <div class="flex items-center justify-between mb-3">
+                        <p class="text-gray-700 font-semibold">Total:</p>
+                        <span id="cart-total" class="text-lg font-bold text-blue-600">$0.00</span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <button id="btnCheckout"
+                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
+                            Checkout
+                        </button>
+                        <button id="btnWithdraw"
+                            class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
+                            Withdraw
+                        </button>
+                    </div>
+                </div>
             </div>
-            <!-- Navbar  -->
-            <!-- Navigation -->
-            <div class="hidden items-center gap-8 md:flex sm:flex">
-                <a class="text-sm font-medium leading-normal text-black dark:text-white" href="index.html">Home</a>
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
-                    href="market.html">Market</a>
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
-                    href="guide.html">Guide</a>
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
-                    href="myDeck.html">MyDeck</a>
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
-                    href="favourite.html">Favourite</a>
-            </div>
-
-            <!--  cart btn -->
-            <div class="flex items-center gap-4">
-                <button
-                    class="relative flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black/5 text-black dark:bg-white/5 dark:text-white">
-                    <span class="material-symbols-outlined text-xl">shopping_cart</span>
-                    <div
-                        class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pokeball-red text-xs font-bold text-white">
-                        3</div>
-                </button>
-            </div>
-        </header>
-
-        <div class="flex flex-1">
-            <section
-                class="sticky top-[65px] h-[calc(100vh-65px)] w-150 flex-shrink-0 border-r border-black/10 p-6 dark:border-white/10">
-                <div class="text-white text-6xl/[2] font-thin text-left  px-20 ">
-                    HoliYo – <br>
-                    Catch, <br>
-                    Collect, <br>
-                    Hold.
-                </div>
-            </section>
-
-            <main class="flex-1 p-6 lg:p-8">
-                <div class="mb-13">
-                    <a class="text-5xl  text-white" href="market.html"> Start you collection: </a>
-                </div>
-                <div class="deck relative w-[250px] aspect-[3/4]">
-
-                    <div class="card absolute inset-0">
-                        <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
-                            class="w-full h-full rounded-xl object-cover">
-                    </div>
-
-
-                    <div class="card top-card absolute inset-0">
-                        <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
-                            class="w-full h-full rounded-xl object-cover">
-                    </div>
-                </div>
-
-
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <div class="card relative inset-0">
-                            <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
-                                class="w-full h-full rounded-xl object-cover">
-                        </div>
-                    </div>
-                    <div class="swiper-wrapper">
-                        <div class="card relative inset-0">
-                            <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
-                                class="w-full h-full rounded-xl object-cover">
-                        </div>
-                    </div>
-                    <div class="swiper-wrapper">
-                        <div class="card relative inset-0">
-                            <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
-                                class="w-full h-full rounded-xl object-cover">
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-scrollbar"></div>
-
-
-            </main>
-            <footer>
-                    <h1 class="text-3xl font-bold text-white select-none">
-                        Holi<span class="text-blue-300">Yo</span>
-                    </h1>   
-            </footer>
         </div>
+    </header>
+
+    <!-- MAIN SECTION -->
+    <div class="flex flex-1 flex-col lg:flex-row">
+
+      <section class="lg:sticky top-[65px] w-full lg:w-[320px] flex-shrink-0 p-10 border-r border-white/10 flex items-center justify-center text-center bg-black/10">
+        <h2 class="text-5xl md:text-6xl font-thin leading-tight">
+          HoliYo – <br>Catch, <br>Collect, <br>Hold.
+        </h2>
+      </section>
+
+      <main class="flex-1 p-6 sm:p-10">
+        <div class="mb-10 text-center lg:text-left">
+          <a href="market.html" class="text-4xl md:text-5xl font-semibold text-white hover:text-blue-300 transition">
+            Start your collection
+          </a>
+        </div>
+
+        <!-- 🎴 Animated Deck -->
+        <div class="deck relative w-[250px] sm:w-[300px] mx-auto mb-10">
+          <div class="card absolute inset-0">
+            <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
+              class="w-full h-full rounded-xl object-cover shadow-lg">
+          </div>
+          <div class="card top-card absolute inset-0">
+            <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
+              class="w-full h-full rounded-xl object-cover shadow-2xl">
+          </div>
+        </div>
+
+        <!-- 🌀 Swiper Carousel -->
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/charizard_v.png" alt="Card 3"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </main>
     </div>
-    <script src="../js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto py-6 text-center bg-black/20 border-t border-white/10">
+      <h1 class="text-2xl font-bold">Holi<span class="text-blue-300">Yo</span></h1>
+      <p class="text-sm text-gray-300 mt-2">© 2025 HoliYo – Catch them all</p>
+    </footer>
+  </div>
+
+    <script src="../js/app.js"></script>
+  <script src="../js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
 </body>
 
 </html>
