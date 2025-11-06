@@ -4,7 +4,7 @@ let market = document.getElementById("market");
 let content = [
     {
         id: 1,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Inferno V",
         hp: 220,
         price: 420.75,
@@ -12,7 +12,7 @@ let content = [
     },
     {
         id: 2,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Blaze EX",
         hp: 210,
         price: 389.99,
@@ -21,7 +21,7 @@ let content = [
     },
     {
         id: 3,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Ember Basic",
         hp: 180,
         price: 259.50,
@@ -30,7 +30,7 @@ let content = [
     },
     {
         id: 4,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Mega Charizard GX",
         hp: 300,
         price: 499.00,
@@ -39,7 +39,7 @@ let content = [
     },
     {
         id: 5,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Crimson V",
         hp: 230,
         price: 410.25,
@@ -47,7 +47,7 @@ let content = [
     },
     {
         id: 6,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Solar EX",
         hp: 215,
         price: 365.40,
@@ -55,7 +55,7 @@ let content = [
     },
     {
         id: 7,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Classic",
         hp: 190,
         price: 275.80,
@@ -63,7 +63,7 @@ let content = [
     },
     {
         id: 8,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Charizard Ultra GX",
         hp: 320,
         price: 525.00,
@@ -71,7 +71,7 @@ let content = [
     },
     {
         id: 1,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Inferno V",
         hp: 220,
         price: 420.75,
@@ -79,7 +79,7 @@ let content = [
     },
     {
         id: 2,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Blaze EX",
         hp: 210,
         price: 389.99,
@@ -88,7 +88,7 @@ let content = [
     },
     {
         id: 3,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Ember Basic",
         hp: 180,
         price: 259.50,
@@ -97,7 +97,7 @@ let content = [
     },
     {
         id: 4,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Mega Charizard GX",
         hp: 300,
         price: 499.00,
@@ -106,7 +106,7 @@ let content = [
     },
     {
         id: 5,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Crimson V",
         hp: 230,
         price: 410.25,
@@ -114,7 +114,7 @@ let content = [
     },
     {
         id: 6,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Solar EX",
         hp: 215,
         price: 365.40,
@@ -122,7 +122,7 @@ let content = [
     },
     {
         id: 7,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Classic",
         hp: 190,
         price: 275.80,
@@ -130,7 +130,7 @@ let content = [
     },
     {
         id: 8,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Charizard Ultra GX",
         hp: 320,
         price: 525.00,
@@ -138,7 +138,7 @@ let content = [
     },
     {
         id: 1,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Inferno V",
         hp: 220,
         price: 420.75,
@@ -146,7 +146,7 @@ let content = [
     },
     {
         id: 2,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Blaze EX",
         hp: 210,
         price: 389.99,
@@ -155,7 +155,7 @@ let content = [
     },
     {
         id: 3,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Ember Basic",
         hp: 180,
         price: 259.50,
@@ -164,7 +164,7 @@ let content = [
     },
     {
         id: 4,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Mega Charizard GX",
         hp: 300,
         price: 499.00,
@@ -173,7 +173,7 @@ let content = [
     },
     {
         id: 5,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Crimson V",
         hp: 230,
         price: 410.25,
@@ -181,7 +181,7 @@ let content = [
     },
     {
         id: 6,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Solar EX",
         hp: 215,
         price: 365.40,
@@ -189,7 +189,7 @@ let content = [
     },
     {
         id: 7,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Classic",
         hp: 190,
         price: 275.80,
@@ -197,7 +197,7 @@ let content = [
     },
     {
         id: 8,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Charizard Ultra GX",
         hp: 320,
         price: 525.00,
@@ -205,7 +205,7 @@ let content = [
     },
     {
         id: 1,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Inferno V",
         hp: 220,
         price: 420.75,
@@ -213,7 +213,7 @@ let content = [
     },
     {
         id: 2,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Blaze EX",
         hp: 210,
         price: 389.99,
@@ -222,7 +222,7 @@ let content = [
     },
     {
         id: 3,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Ember Basic",
         hp: 180,
         price: 259.50,
@@ -231,7 +231,7 @@ let content = [
     },
     {
         id: 4,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Mega Charizard GX",
         hp: 300,
         price: 499.00,
@@ -240,7 +240,7 @@ let content = [
     },
     {
         id: 5,
-        img_url: "../assets/charizard_cards/charizard_v.png",
+        img_url: "assets/charizard_cards/charizard_v.png",
         name: "Charizard Crimson V",
         hp: 230,
         price: 410.25,
@@ -248,7 +248,7 @@ let content = [
     },
     {
         id: 6,
-        img_url: "../assets/charizard_cards/charizard_v1.png",
+        img_url: "assets/charizard_cards/charizard_v1.png",
         name: "Charizard Solar EX",
         hp: 215,
         price: 365.40,
@@ -256,7 +256,7 @@ let content = [
     },
     {
         id: 7,
-        img_url: "../assets/charizard_cards/charizard_v2.png",
+        img_url: "assets/charizard_cards/charizard_v2.png",
         name: "Charizard Classic",
         hp: 190,
         price: 275.80,
@@ -264,7 +264,7 @@ let content = [
     },
     {
         id: 8,
-        img_url: "../assets/charizard_cards/mega_charizard.png",
+        img_url: "assets/charizard_cards/mega_charizard.png",
         name: "Charizard Ultra GX",
         hp: 320,
         price: 525.00,

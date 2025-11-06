@@ -9,24 +9,24 @@ document.querySelector('.deck').addEventListener('mouseleave', () => {
     topCard.style.transform = 'translateX(0) rotate(0deg) scale(1)';
 });
 
-const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
+
+
+new Swiper('.featured-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
     loop: true,
-
-    // If we need pagination
+    centeredSlides: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+    },
     pagination: {
-        el: '.swiper-pagination',
-    },
-
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-        el: '.swiper-scrollbar',
+        el: '.featured-swiper .swiper-pagination',
+        clickable: true,
     },
 });
+
