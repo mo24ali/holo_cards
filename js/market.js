@@ -376,11 +376,16 @@ document.addEventListener("DOMContentLoaded", updateCartDisplay);
 
 let cartTotal = document.getElementById("cart-total");
 let counterPrice = 0;
+function parsePrice(price) {
+    return typeof price === "string" ? parseFloat(price.replace("$", "")) : price;
+}
 
 function updateTotalPrice() {
     const total = cart.reduce((sum, x) => sum + parsePrice(x.price) * x.quantity, 0);
-    cartTotal.innerHTML = `${total.toFixed(2)}`;
+    const cartTotal = document.getElementById("cart-total"); 
+    if (cartTotal) cartTotal.textContent = total.toFixed(2);
 }
+
 
 function addToCart(itemId) {
     const item = content.find(item => item.id === itemId);
@@ -421,6 +426,8 @@ function increment(item) {
     } else {
         cart.push({ ...item, quantity: 1 });
     }
+    updateCartDisplay();
+
 }
 
 function decrement(item) {
@@ -510,7 +517,7 @@ if (btnCheckout) {
         localStorage.removeItem("cart");
         updateCartDisplay();
 
-        console.log("✅ Checkout complete. Cards added to MyDeck:", myDeck);
+        console.log(" Checkout complete. Cards added to MyDeck:", myDeck);
 
       
     });
@@ -526,10 +533,10 @@ if (btnWithdraw) {
 
         localStorage.removeItem("cart");
         updateCartDisplay();
-        console.log("🗑️ Cart withdrawn (cleared).");
+        console.log("Cart withdrawn (cleared).");
     });
 }
-//rarity filters
+//rarity filtergs
 const rarityCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 function applyRarityFilter() {
     const rarities = Array.from(rarityCheckboxes)
