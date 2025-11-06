@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <style type="text/tailwindcss">
+    :root {
+      --primary: #3B82F6;
+      --background-dark: #18181B;
+      --pokeball-red: #EE1515;
+      --font-display: "Spline Sans", sans-serif;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+    }
+
+    .card {
+      transition: transform 0.5s ease, box-shadow 0.4s ease;
+      transform-origin: center;
+    }
+
+    /* Floating animation */
+    .card img {
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Deck 3D hover effect */
+    .deck {
+      perspective: 1000px;
+    }
+
+    .deck:hover .top-card {
+      transform: rotateY(15deg) rotateX(5deg) translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Swiper general styling */
+    .swiper {
+      width: 100%;
+      max-width: 900px;
+      height: 340px;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="font-display bg-gradient-to-b from-[#1C313F] to-[#B4BFCA] text-white">
+  <div class="flex flex-col min-h-screen w-full">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-background-dark/80 px-6 py-4 backdrop-blur-lg">
+      <h1 class="text-3xl font-bold select-none">Holi<span class="text-blue-400">Yo</span></h1>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm hover:text-blue-400 transition">Home</a>
+        <a href="market.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Market</a>
+        <a href="guide.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Guide</a>
+        <a href="myDeck.html" class="text-sm text-gray-300 hover:text-blue-400 transition">MyDeck</a>
+        <a href="favourite.html" class="text-sm text-gray-300 hover:text-blue-400 transition">Favourite</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <div class="flex flex-1 flex-col lg:flex-row">
+
+      <section class="lg:sticky top-[65px] w-full lg:w-[320px] flex-shrink-0 p-10 border-r border-white/10 flex items-center justify-center text-center bg-black/10">
+        <h2 class="text-5xl md:text-6xl font-thin leading-tight">
+          HoliYo – <br>Catch, <br>Collect, <br>Hold.
+        </h2>
+      </section>
+
+      <main class="flex-1 p-6 sm:p-10">
+        <div class="mb-10 text-center lg:text-left">
+          <a href="market.html" class="text-4xl md:text-5xl font-semibold text-white hover:text-blue-300 transition">
+            Start your collection
+          </a>
+        </div>
+
+        <!-- 🎴 Animated Deck -->
+        <div class="deck relative w-[250px] sm:w-[300px] mx-auto mb-10">
+          <div class="card absolute inset-0">
+            <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
+              class="w-full h-full rounded-xl object-cover shadow-lg">
+          </div>
+          <div class="card top-card absolute inset-0">
+            <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
+              class="w-full h-full rounded-xl object-cover shadow-2xl">
+          </div>
+        </div>
+
+        <!-- 🌀 Swiper Carousel -->
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/charizard_v.png" alt="Card 1"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/mega_charizard.png" alt="Card 2"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+            <div class="swiper-slide card">
+              <img src="../assets/charizard_cards/charizard_v1.png" alt="Card 3"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- 🧩 Bottom Slider -->
+    <section id="featured-slider" class="w-full py-16 bg-black/20">
+      <h2 class="text-4xl font-bold text-center mb-10 text-blue-300">🔥 Featured Cards</h2>
+
+      <div class="swiper featured-swiper w-full max-w-5xl mx-auto rounded-2xl overflow-hidden">
+        <div class="swiper-wrapper" id="slider-wrapper"></div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-12 px-4 sm:px-10 mt-16">
+      <div class="max-w-7xl mx-auto text-center text-gray-400">
+        <p>© 2025 HoliYo. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+  <script>
+    // 🔥 Animated card logic
+    const topCard = document.querySelector('.top-card');
+
+    document.querySelector('.deck').addEventListener('mouseenter', () => {
+      topCard.style.transform = 'translateX(60px) rotate(10deg) scale(1.05)';
+    });
+
+    document.querySelector('.deck').addEventListener('mouseleave', () => {
+      topCard.style.transform = 'translateX(0) rotate(0deg) scale(1)';
+    });
+
+    // 🔄 First Swiper (vertical)
+    const swiper = new Swiper('.swiper', {
+      direction: 'vertical',
+      loop: true,
+      pagination: { el: '.swiper-pagination' },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      scrollbar: { el: '.swiper-scrollbar' },
+    });
+
+    // 🧩 Featured Slider JS
+    document.addEventListener("DOMContentLoaded", () => {
+      const featuredCards = [
+        { img: "../assets/charizard_cards/charizard_v.png", name: "Charizard V" },
+        { img: "../assets/charizard_cards/mega_charizard.png", name: "Mega Charizard" },
+        { img: "../assets/charizard_cards/charizard_v2.png", name: "Charizard VSTAR" },
+        { img: "../assets/charizard_cards/charizard_v1.png", name: "Charizard VMAX" },
+        { img: "../assets/charizard_cards/charizard_v1.png", name: "Inferno Charizard" },
+      ];
+
+      const sliderWrapper = document.getElementById("slider-wrapper");
+      featuredCards.forEach(card => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide flex flex-col items-center justify-center bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform";
+        slide.innerHTML = `
+          <img src="${card.img}" alt="${card.name}" class="w-64 h-80 object-cover rounded-xl shadow-xl mb-4 card">
+          <p class="text-white font-semibold text-xl">${card.name}</p>
+        `;
+        sliderWrapper.appendChild(slide);
+      });
+
+      // Second Swiper (horizontal)
+      new Swiper(".featured-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+        pagination: {
+          el: ".featured-swiper .swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".featured-swiper .swiper-button-next",
+          prevEl: ".featured-swiper .swiper-button-prev",
+        },
+      });
+    });
+  </script>
+</body>
+</html>
