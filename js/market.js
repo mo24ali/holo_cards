@@ -442,6 +442,7 @@ function decrement(item) {
     } else {
         cart = cart.filter(x => x.id !== item.id);
     }
+    updateCartDisplay();
 }
 
 //filtering by sorting
