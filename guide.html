@@ -58,79 +58,86 @@
              bg-gradient-to-b from-[#1C313F] to-[#B4BFCA]">
     <div class="relative flex h-auto min-h-screen w-full flex-col">
         <header
-      class="sticky top-0 z-10 flex items-center justify-between border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
+            class="sticky top-0 z-10 flex items-center justify-between border-b border-black/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:border-white/10 dark:bg-background-dark/40 sm:px-6 lg:px-8">
 
-      <div class="flex items-center gap-4 text-black dark:text-white">
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-            <div class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold"></div>
-          </div>
-          <h1 class="text-3xl font-bold text-white select-none">Holi<span class="text-blue-300">Yo</span></h1>
-        </div>
-      </div>
-
-      <nav class="hidden md:flex items-center gap-8">
-        <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="index.html">Home</a>
-        <a class="text-sm font-medium leading-normal text-black/70 dark:text-white" href="market.html">Market</a>
-        <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="guide.html">Guide</a>
-        <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="myDeck.html">MyDeck</a>
-        <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
-          href="favourite.html">Favourite</a>
-      </nav>
-
-      <button id="burgerBtn"
-        class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
-        <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
-        <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
-        <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
-      </button>
-
-      <div class="bg-gray-600 flex items-center justify-center">
-        <button id="cartTrigger"
-          class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
-          <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-          <span id="cartCounter"
-            class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
-        </button>
-
-        <div id="cart"
-                class=" hidden fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-0 transition-transform duration-9000 ease-in-out z-50 border-l-4 shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
-          <div
-            class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-[#1C313F] to-[#B4BFCA] text-white shadow-md">
-            <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-              <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
+            <div class="flex items-center gap-4 text-black dark:text-white">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                        <div
+                            class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                        </div>
+                    </div>
+                    <h1 class="text-3xl font-bold text-white select-none">Holi<span class="text-blue-300">Yo</span></h1>
+                </div>
             </div>
-            <button id="btnClose"
-              class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
-              Close
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="index.html">Home</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white"
+                    href="market.html">Market</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="guide.html">Guide</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="myDeck.html">MyDeck</a>
+                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
+                    href="favourite.html">Favourite</a>
+            </nav>
+
+            <button id="burgerBtn"
+                class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
+                <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
             </button>
-          </div>
-          <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-700 overflow-scroll"></ul>
 
-          <div class="p-5 bg-white border-t shadow-inner">
-            <div class="flex items-center justify-between mb-3">
-              <p class="text-gray-700 font-semibold">Total:</p>
-              <span class="text-lg font-bold text-blue-600">$ <span id="cart-total"
-                  class="text-lg font-bold text-blue-600">0.00</span></span>
+            <div class="bg-gray-600 flex items-center justify-center">
+                <button id="cartTrigger"
+                    class="fixed top-5 right-5 z-40 flex items-center justify-center h-12 w-12 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 transition">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cartCounter"
+                        class="absolute -top-1 -right-1 bg-red-600 text-xs text-white font-semibold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+
+                <div id="cart"
+                    class=" hidden fixed top-0 right-0 w-80 max-w-[90vw] transform translate-x-0 transition-transform duration-9000 ease-in-out z-50 border-l-4 shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
+                    <div
+                        class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-[#1C313F] to-[#B4BFCA] text-white shadow-md">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                            <h3 class="text-lg font-semibold tracking-wide">Your Cart</h3>
+                        </div>
+                        <button id="btnClose"
+                            class="text-white bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-300 rounded-md px-3 py-1 text-sm font-medium">
+                            Close
+                        </button>
+                    </div>
+                    <ul id="cart-items" class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-700 overflow-scroll">
+                    </ul>
+
+                    <div class="p-5 bg-white border-t shadow-inner">
+                        <div class="flex items-center justify-between mb-3">
+                            <p class="text-gray-700 font-semibold">Total:</p>
+                            <span class="text-lg font-bold text-blue-600">$ <span id="cart-total"
+                                    class="text-lg font-bold text-blue-600">0.00</span></span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button id="btnCheckout"
+                                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                Checkout
+                            </button>
+                            <button id="btnWithdraw"
+                                class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
+                                Withdraw
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex flex-col gap-2">
-              <button id="btnCheckout"
-                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-blue-300">
-                Checkout
-              </button>
-              <button id="btnWithdraw"
-                class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition focus:outline-none focus:ring-4 focus:ring-red-300">
-                Withdraw
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+        </header>
         <div class="flex flex-1">
-            <aside class="sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6">
+            <aside class="overflow-y-auto max-h-[80vh] hidden lg:block sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6">
                 <div class="flex h-full flex-col gap-6">
                     <h1 class="text-base font-medium leading-normal text-black dark:text-white">Table of Contents</h1>
                     <label class="flex h-12 w-full flex-col">
@@ -146,25 +153,25 @@
                     </label>
                     <nav class="flex flex-col gap-2">
                         <a class="rounded-lg bg-black/5 px-3 py-2 text-sm font-medium text-black dark:bg-white/5 dark:text-white"
-                            href="#">1. Introduction</a>
+                            href="#introduction">1. Introduction</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">2. Game Setup</a>
+                            href="#game-setup">2. Game Setup</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">3. Parts of a Card</a>
+                            href="#parts-of-a-card">3. Parts of a Card</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">4. Turn Structure</a>
+                            href="#turn-structure">4. Turn Structure</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">5. Attacking</a>
+                            href="#attacking">5. Attacking</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">6. Special Conditions</a>
+                            href="#special-conditions">6. Special Conditions</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">7. Winning the Game</a>
+                            href="#winning-the-game">7. Winning the Game</a>
                         <a class="rounded-lg px-3 py-2 text-sm text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/5"
-                            href="#">8. Advanced Rules</a>
+                            href="#advanced-rules">8. Advanced Rules</a>
                     </nav>
                 </div>
             </aside>
-            <main class="flex-1 p-6 lg:p-8">
+            <main class="flex-1 p-6 sm:px-6 lg:px-8">
                 <div class="mx-auto max-w-4xl">
                     <div class="mb-8">
                         <h1 class="text-4xl font-bold text-black dark:text-white">Pokémon Trading Card Game Rules</h1>
@@ -197,7 +204,7 @@
                             <div
                                 class="my-6 rounded-xl border border-black/10 bg-white p-4 shadow-lg dark:border-white/10 dark:bg-dark-slate">
                                 <img alt="Diagram of the Pokemon TCG playmat setup" class="w-full rounded-lg"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWdThWYc-cMe6psrIUAGoFs_vDQ1YmY_My5W4H6KzgK1jmr4rG1F21PjD9TYdF2Z4vJcTBA3Oj5qiOeFBABrb0b01QkHd2nVexdlZDMo9sBL37Ln6A2EAl2AmFU3kY4D4ndn3nB2qi6X8ytl9GfVXqyzhZTNfJIo2ebop3H6iMgvC_9Eb01iMOpQGkBacPmYwZRNHBNye6e7zDrzUNgbdDa1rl3-2wbX5_18Ot4IsYUbvEBfDppN2IbZ2h1dYbl-pc8N5DmCewyPE" />
+                                    src="assets/charizard_cards/Legendary_pink.png" />
                                 <p class="mt-2 text-center text-sm text-black/60 dark:text-white/60">A standard play
                                     area layout showing the Deck, Discard Pile, Active Pokémon, Bench, and Prize Cards.
                                 </p>
@@ -246,70 +253,77 @@
 
         </div>
         <footer class="bg-gray-950 border-t   border-gray-800 py-12 px-4 sm:px-10 mt-16  ">
-      <div class="max-w-7xl mx-auto">
+            <div class="max-w-7xl mx-auto">
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 ">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 ">
 
-          <div class="md:col-span-1">
-            <a href="/" class="flex items-center gap-3 mb-4">
+                    <div class="md:col-span-1">
+                        <a href="/" class="flex items-center gap-3 mb-4">
 
-              <div class="flex items-center gap-3">
-                <div class="relative">
-                  <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
-                  <div class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
-                  </div>
+                            <div class="flex items-center gap-3">
+                                <div class="relative">
+                                    <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
+                                    <div
+                                        class="w-16 h-16 bg-blue-300 relative flex items-center justify-center text-black font-semibold">
+                                    </div>
+                                </div>
+                                <h1 class="text-3xl font-bold text-white select-none">
+                                    Holi<span class="text-blue-300">Yo</span>
+                                </h1>
+                            </div>
+                        </a>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Catch,
+                            Collect,
+                            Hold.
+
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Game</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="market.html" class="text-gray-400 hover:text-purple-400 transition">Play
+                                    Now</a></li>
+                            <li><a href="market.html"
+                                    class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
+                            <li><a href="myDeck.html" class="text-gray-400 hover:text-purple-400 transition">My Deck</a>
+                            </li>
+                            <li><a href="favourite.html" class="text-gray-400 hover:text-purple-400 transition">My
+                                    Favourites</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Learn</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="guide.html" class="text-gray-400 hover:text-purple-400 transition">Beginner
+                                    Guide</a>
+                            </li>
+                            <li><a href="guide.html" class="text-gray-400 hover:text-purple-400 transition">Card
+                                    Rules</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-white mb-4">Support</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Contact Us</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Report Bug</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Terms of Service</a>
+                            </li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
-                <h1 class="text-3xl font-bold text-white select-none">
-                  Holi<span class="text-blue-300">Yo</span>
-                </h1>
-              </div>
-            </a>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Catch,
-              Collect,
-              Hold.
 
-            </p>
-          </div>
-
-          <div>
-            <h3 class="font-bold text-white mb-4">Game</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="market.html" class="text-gray-400 hover:text-purple-400 transition">Play Now</a></li>
-              <li><a href="market.html" class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
-              <li><a href="myDeck.html" class="text-gray-400 hover:text-purple-400 transition">My Deck</a></li>
-              <li><a href="favourite.html" class="text-gray-400 hover:text-purple-400 transition">My Favourites</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-bold text-white mb-4">Learn</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="guide.html" class="text-gray-400 hover:text-purple-400 transition">Beginner Guide</a>
-              </li>
-              <li><a href="guide.html" class="text-gray-400 hover:text-purple-400 transition">Card Rules</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">FAQ</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="font-bold text-white mb-4">Support</h3>
-            <ul class="space-y-2 text-sm">
-              <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Contact Us</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Report Bug</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Terms of Service</a>
-              </li>
-              <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Privacy Policy</a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-    </footer>
+            </div>
+        </footer>
     </div>
-    <script src="../js/app.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 
