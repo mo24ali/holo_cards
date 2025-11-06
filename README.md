@@ -2,7 +2,7 @@
 
 > Welcome to holiYo — your go-to web shop for premium Charizard cards to play with, collect, and trade.
 
-[Visit holiYo (Live Site)](https://holo-cards.vercel.app)  
+[Visit holiYo (Live Site)](https://mo24ali.github.io/holo_cards)  
 (Click to browse our catalog.)
 
 ---
