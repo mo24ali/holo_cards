@@ -1,279 +1,294 @@
-
-
 let market = document.getElementById("market");
 let content = [
-    {
-        id: 1,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Inferno V",
-        hp: 220,
-        price: 420.75,
-        quantity: 0,
-    },
-    {
-        id: 2,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Blaze EX",
-        hp: 210,
-        price: 389.99,
-        quantity: 0,
-
-    },
-    {
-        id: 3,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Ember Basic",
-        hp: 180,
-        price: 259.50,
-        quantity: 0,
-
-    },
-    {
-        id: 4,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Mega Charizard GX",
-        hp: 300,
-        price: 499.00,
-        quantity: 0,
-
-    },
-    {
-        id: 5,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Crimson V",
-        hp: 230,
-        price: 410.25,
-        quantity: 0,
-    },
-    {
-        id: 6,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Solar EX",
-        hp: 215,
-        price: 365.40,
-        quantity: 0,
-    },
-    {
-        id: 7,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Classic",
-        hp: 190,
-        price: 275.80,
-        quantity: 0,
-    },
-    {
-        id: 8,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Charizard Ultra GX",
-        hp: 320,
-        price: 525.00,
-        quantity: 0,
-    },
-    {
-        id: 1,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Inferno V",
-        hp: 220,
-        price: 420.75,
-        quantity: 0,
-    },
-    {
-        id: 2,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Blaze EX",
-        hp: 210,
-        price: 389.99,
-        quantity: 0,
-
-    },
-    {
-        id: 3,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Ember Basic",
-        hp: 180,
-        price: 259.50,
-        quantity: 0,
-
-    },
-    {
-        id: 4,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Mega Charizard GX",
-        hp: 300,
-        price: 499.00,
-        quantity: 0,
-
-    },
-    {
-        id: 5,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Crimson V",
-        hp: 230,
-        price: 410.25,
-        quantity: 0,
-    },
-    {
-        id: 6,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Solar EX",
-        hp: 215,
-        price: 365.40,
-        quantity: 0,
-    },
-    {
-        id: 7,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Classic",
-        hp: 190,
-        price: 275.80,
-        quantity: 0,
-    },
-    {
-        id: 8,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Charizard Ultra GX",
-        hp: 320,
-        price: 525.00,
-        quantity: 0,
-    },
-    {
-        id: 1,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Inferno V",
-        hp: 220,
-        price: 420.75,
-        quantity: 0,
-    },
-    {
-        id: 2,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Blaze EX",
-        hp: 210,
-        price: 389.99,
-        quantity: 0,
-
-    },
-    {
-        id: 3,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Ember Basic",
-        hp: 180,
-        price: 259.50,
-        quantity: 0,
-
-    },
-    {
-        id: 4,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Mega Charizard GX",
-        hp: 300,
-        price: 499.00,
-        quantity: 0,
-
-    },
-    {
-        id: 5,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Crimson V",
-        hp: 230,
-        price: 410.25,
-        quantity: 0,
-    },
-    {
-        id: 6,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Solar EX",
-        hp: 215,
-        price: 365.40,
-        quantity: 0,
-    },
-    {
-        id: 7,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Classic",
-        hp: 190,
-        price: 275.80,
-        quantity: 0,
-    },
-    {
-        id: 8,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Charizard Ultra GX",
-        hp: 320,
-        price: 525.00,
-        quantity: 0,
-    },
-    {
-        id: 1,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Inferno V",
-        hp: 220,
-        price: 420.75,
-        quantity: 0,
-    },
-    {
-        id: 2,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Blaze EX",
-        hp: 210,
-        price: 389.99,
-        quantity: 0,
-
-    },
-    {
-        id: 3,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Ember Basic",
-        hp: 180,
-        price: 259.50,
-        quantity: 0,
-
-    },
-    {
-        id: 4,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Mega Charizard GX",
-        hp: 300,
-        price: 499.00,
-        quantity: 0,
-
-    },
-    {
-        id: 5,
-        img_url: "assets/charizard_cards/charizard_v.png",
-        name: "Charizard Crimson V",
-        hp: 230,
-        price: 410.25,
-        quantity: 0,
-    },
-    {
-        id: 6,
-        img_url: "assets/charizard_cards/charizard_v1.png",
-        name: "Charizard Solar EX",
-        hp: 215,
-        price: 365.40,
-        quantity: 0,
-    },
-    {
-        id: 7,
-        img_url: "assets/charizard_cards/charizard_v2.png",
-        name: "Charizard Classic",
-        hp: 190,
-        price: 275.80,
-        quantity: 0,
-    },
-    {
-        id: 8,
-        img_url: "assets/charizard_cards/mega_charizard.png",
-        name: "Charizard Ultra GX",
-        hp: 320,
-        price: 525.00,
-        quantity: 0,
-    },
-
-]
-
-
+  {
+    id: 1,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Inferno V",
+    hp: 220,
+    price: 420.75,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 2,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Blaze EX",
+    hp: 210,
+    price: 389.99,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 3,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Ember Basic",
+    hp: 180,
+    price: 259.5,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 4,
+    img_url: "assets/charizard_cards/Legendary_black.png",
+    name: "Mega Charizard GX",
+    hp: 1200,
+    price: 499.0,
+    rarity: "Legendary",
+    quantity: 0,
+  },
+  {
+    id: 5,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Crimson V",
+    hp: 230,
+    price: 410.25,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 6,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Solar EX",
+    hp: 215,
+    price: 365.4,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 7,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Classic",
+    hp: 190,
+    price: 275.8,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 8,
+    img_url: "assets/charizard_cards/Legendary_pink.png",
+    name: "Charizard Ultra GX",
+    hp: 2400,
+    price: 525.0,
+    rarity: "Legendary",
+    quantity: 0,
+  },
+  {
+    id: 9,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Inferno V",
+    hp: 220,
+    price: 420.75,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 10,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Blaze EX",
+    hp: 210,
+    price: 389.99,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 11,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Ember Basic",
+    hp: 180,
+    price: 259.5,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 12,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Mega Charizard GX",
+    hp: 300,
+    price: 499.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 13,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Crimson V",
+    hp: 230,
+    price: 410.25,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 14,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Solar EX",
+    hp: 215,
+    price: 365.4,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 15,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Classic",
+    hp: 190,
+    price: 275.8,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 16,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Charizard Ultra GX",
+    hp: 320,
+    price: 525.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 17,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Inferno V",
+    hp: 220,
+    price: 420.75,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 18,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Blaze EX",
+    hp: 210,
+    price: 389.99,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 19,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Ember Basic",
+    hp: 180,
+    price: 259.5,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 20,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Mega Charizard GX",
+    hp: 300,
+    price: 499.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 21,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Crimson V",
+    hp: 230,
+    price: 410.25,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 22,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Solar EX",
+    hp: 215,
+    price: 365.4,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 23,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Classic",
+    hp: 190,
+    price: 275.8,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 24,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Charizard Ultra GX",
+    hp: 320,
+    price: 525.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 25,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Inferno V",
+    hp: 220,
+    price: 420.75,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 26,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Blaze EX",
+    hp: 210,
+    price: 389.99,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 27,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Ember Basic",
+    hp: 180,
+    price: 259.5,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 28,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Mega Charizard GX",
+    hp: 300,
+    price: 499.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 29,
+    img_url: "assets/charizard_cards/charizard_v.png",
+    name: "Charizard Crimson V",
+    hp: 230,
+    price: 410.25,
+    rarity: "Rare",
+    quantity: 0,
+  },
+  {
+    id: 30,
+    img_url: "assets/charizard_cards/charizard_v1.png",
+    name: "Charizard Solar EX",
+    hp: 215,
+    price: 365.4,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+  {
+    id: 31,
+    img_url: "assets/charizard_cards/charizard_v2.png",
+    name: "Charizard Classic",
+    hp: 190,
+    price: 275.8,
+    rarity: "Common",
+    quantity: 0,
+  },
+  {
+    id: 32,
+    img_url: "assets/charizard_cards/mega_charizard.png",
+    name: "Charizard Ultra GX",
+    hp: 320,
+    price: 525.0,
+    rarity: "Ultra Rare",
+    quantity: 0,
+  },
+];
 
 let generateMarket = () => {
     return (market.innerHTML = content.map((x) => {
@@ -311,7 +326,6 @@ let generateMarket = () => {
 }
 
 generateMarket();
-
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -358,12 +372,10 @@ function updateCartDisplay() {
     updateTotalPrice();
 }
 
-
 document.addEventListener("DOMContentLoaded", updateCartDisplay);
 
 let cartTotal = document.getElementById("cart-total");
 let counterPrice = 0;
-
 
 function updateTotalPrice() {
     const total = cart.reduce((sum, x) => sum + parsePrice(x.price) * x.quantity, 0);
@@ -456,7 +468,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
 //adding to the favorite 
 let favorite = JSON.parse(localStorage.getItem("favorite")) || [];
 
@@ -518,3 +529,148 @@ if (btnWithdraw) {
         console.log("🗑️ Cart withdrawn (cleared).");
     });
 }
+//rarity filters
+const rarityCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+function applyRarityFilter() {
+    const rarities = Array.from(rarityCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.nextElementSibling.textContent.trim()); 
+
+    const filteredContent = content.filter(card => rarities.includes(card.rarity));
+
+    market.innerHTML = filteredContent.map(x => {
+        return `
+        <div id="card-id-${x.id}" class="relative flex flex-col rounded-xl border border-black/10 bg-black shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate">
+            <div class="aspect-[3/4] w-full p-4">
+                <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat" style="background-image: url('${x.img_url}');"></div>
+            </div>
+            <button id="btn-favorite-${x.id}" class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80" onclick="addToFavorite(${x.id})">
+                <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+            </button>
+            <div class="flex flex-col gap-3 p-4 pt-0">
+                <div class="flex items-start justify-between">
+                    <h3 class="text-lg font-bold text-black dark:text-white">${x.name}</h3>
+                    <div class="flex items-center gap-1">
+                        <span class="text-sm font-semibold text-red-500">HP</span>
+                        <span class="text-lg font-bold text-black dark:text-white">${x.hp}</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <p class="text-2xl font-bold text-primary">$ ${x.price}</p>
+                    <button onclick="addToCart(${x.id})" class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-color bg-[#4780db] hover:bg-[#4285F4]/90">
+                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    }).join('');
+}
+
+rarityCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        applyRarityFilter();
+    });
+});
+
+
+
+
+applyRarityFilter();
+//pagination logic
+
+let currentPage = 1;
+const cardsPerPage = 6; 
+let filteredContent = []; 
+
+
+
+applyPagination();
+
+
+rarityCheckboxes.forEach(cb => cb.addEventListener("change", applyPagination));
+
+function applyPagination() {
+    const rarities = Array.from(rarityCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.nextElementSibling.textContent.trim());
+
+    filteredContent = content.filter(card => rarities.includes(card.rarity));
+
+    currentPage = 1;
+    renderMarketPaginated();
+}
+
+function renderMarketPaginated() {
+    const totalCards = filteredContent.length;
+    const totalPages = Math.ceil(totalCards / cardsPerPage);
+
+    const startIndex = (currentPage - 1) * cardsPerPage;
+    const endIndex = startIndex + cardsPerPage;
+    const paginated = filteredContent.slice(startIndex, endIndex);
+
+    market.innerHTML = paginated.map(x => `
+        <div id="card-id-${x.id}" class="relative flex flex-col rounded-xl border border-black/10 bg-black shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-dark-slate">
+            <div class="aspect-[3/4] w-full p-4">
+                <div class="h-full w-full rounded-lg bg-cover bg-center bg-no-repeat" style="background-image: url('${x.img_url}');"></div>
+            </div>
+            <button id="btn-favorite-${x.id}" class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80" onclick="addToFavorite(${x.id})">
+                <span class="material-symbols-outlined fill-icon text-lg">favorite</span>
+            </button>
+            <div class="flex flex-col gap-3 p-4 pt-0">
+                <div class="flex items-start justify-between">
+                    <h3 class="text-lg font-bold text-black dark:text-white">${x.name}</h3>
+                    <div class="flex items-center gap-1">
+                        <span class="text-sm font-semibold text-red-500">HP</span>
+                        <span class="text-lg font-bold text-black dark:text-white">${x.hp}</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <p class="text-2xl font-bold text-primary">$ ${x.price}</p>
+                    <button onclick="addToCart(${x.id})" class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-color bg-[#4780db] hover:bg-[#4285F4]/90">
+                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join("");
+
+   
+
+    updatePaginationUI(totalPages);
+}
+
+function updatePaginationUI(totalPages) {
+    document.getElementById("prevPage").disabled = currentPage === 1;
+    document.getElementById("nextPage").disabled = currentPage === totalPages;
+
+    const pageButtons = document.querySelectorAll(".page-number");
+    pageButtons.forEach(btn => {
+        const page = parseInt(btn.dataset.page);
+        if (page === currentPage) {
+            btn.classList.add("bg-primary", "text-black");
+            btn.classList.remove("bg-black/5", "text-black/80");
+        } else {
+            btn.classList.remove("bg-primary", "text-black");
+            btn.classList.add("bg-black/5", "text-black/80");
+        }
+    });
+}
+
+function goToPage(page) {
+    const totalPages = Math.ceil(filteredContent.length / cardsPerPage);
+    if (page >= 1 && page <= totalPages) {
+        currentPage = page;
+        renderMarketPaginated();
+    }
+}
+
+document.getElementById("prevPage").addEventListener("click", () => goToPage(currentPage - 1));
+document.getElementById("nextPage").addEventListener("click", () => goToPage(currentPage + 1));
+
+document.querySelectorAll(".page-number").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const page = parseInt(btn.dataset.page);
+        goToPage(page);
+    });
+});

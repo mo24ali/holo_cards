@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -226,13 +226,19 @@
                             <input checked=""
                                 class="form-checkbox h-4 w-4 rounded border-black/20 bg-black/5 text-primary focus:ring-primary/50 dark:border-white/20 dark:bg-white/5"
                                 type="checkbox" />
-                            <span class="text-sm text-black/80 dark:text-white/80">Holo Rare</span>
+                            <span class="text-sm text-black/80 dark:text-white/80">Common</span>
                         </label>
                         <label class="flex items-center gap-2">
                             <input
                                 class="form-checkbox h-4 w-4 rounded border-black/20 bg-black/5 text-primary focus:ring-primary/50 dark:border-white/20 dark:bg-white/5"
                                 type="checkbox" />
                             <span class="text-sm text-black/80 dark:text-white/80">Rare</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input
+                                class="form-checkbox h-4 w-4 rounded border-black/20 bg-black/5 text-primary focus:ring-primary/50 dark:border-white/20 dark:bg-white/5"
+                                type="checkbox" />
+                            <span class="text-sm text-black/80 dark:text-white/80">Legendary</span>
                         </label>
                     </div>
                 </div>
@@ -252,25 +258,31 @@
                 <!-- filled dynamically via JS logic -->
             </div>
 
-
-
             <div class="mt-8 flex items-center justify-center gap-2">
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-black/60 dark:bg-white/5 text-black/60"><span
-                        class="material-symbols-outlined text-xl">chevron_left</span></button>
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font text-black">1</button>
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80 dark:bg text-black/5 text-black/80">2</button>
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80 dark:bg text-black/5 text-black/80">3</button>
-                <span class="text-black/60 text-black/60">...</span>
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80 dark:bg text-black/5 text-black/80">201</button>
-                <button
-                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-black/80 dark:bg text-black/5 text-black/80"><span
-                        class="material-symbols-outlined text-xl">chevron_right</span></button>
+                <button id="prevPage"
+                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-black/60 dark:bg-white/5 text-black/60">
+                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+                </button>
+
+                <button data-page="1"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font text-black">1</button>
+                <button data-page="2"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80">2</button>
+                <button data-page="3"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80">3</button>
+                <button data-page="4"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80">4</button>
+                <button data-page="5"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80">5</button>
+                <button data-page="6"
+                    class="page-number flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-sm font-medium text-black/80">6</button>
+
+                <button id="nextPage"
+                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-black/5 text-black/60 dark:bg-white/5 text-black/60">
+                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                </button>
             </div>
+
         </main>
 
     </div>
