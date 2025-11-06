@@ -478,3 +478,43 @@ function addToFavorite(itemId) {
     console.log(`Added ${item.name} to favorites`);
 }
 //clicking the checkout button to add the buyed cards to the mydaeck page
+
+const btnCheckout = document.getElementById("btnCheckout");
+const btnWithdraw = document.getElementById("btnWithdraw");
+
+if (btnCheckout) {
+    btnCheckout.addEventListener("click", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+        let myDeck = JSON.parse(localStorage.getItem("myDeck")) || [];
+
+        myDeck = [...myDeck, ...cart];
+
+        localStorage.setItem("myDeck", JSON.stringify(myDeck));
+
+        localStorage.removeItem("cart");
+        updateCartDisplay();
+
+        console.log("✅ Checkout complete. Cards added to MyDeck:", myDeck);
+
+      
+    });
+}
+
+if (btnWithdraw) {
+    btnWithdraw.addEventListener("click", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+            alert("Your cart is already empty!");
+            return;
+        }
+
+        localStorage.removeItem("cart");
+        updateCartDisplay();
+        console.log("🗑️ Cart withdrawn (cleared).");
+    });
+}
