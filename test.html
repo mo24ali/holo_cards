@@ -76,7 +76,6 @@
                     href="guide.html">Guide</a>
                 <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
                     href="myDeck.html">MyDeck</a>
-                <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="play.html">PLAY</a>
                 <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
                     href="favourite.html">Favorite</a>
             </nav>
@@ -133,49 +132,31 @@
             </div>
         </header>
         <nav id="mobileMenu"
-            class="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-lg bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-in-out md:hidden">
+  class="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-lg bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-in-out md:hidden">
+  
+  <div
+    class="menu-content relative bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-2xl px-10 py-8 flex flex-col items-center gap-6 transform scale-90 opacity-0 transition-all duration-300 ease-in-out border border-white/20">
+    
+    <!-- Close Button -->
+    <button id="menuClose"
+      class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 hover:text-red-500 transition text-3xl leading-none">
+      &times;
+    </button>
 
-            <div
-                class="menu-content relative bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-2xl px-10 py-8 flex flex-col items-center gap-6 transform scale-90 opacity-0 transition-all duration-300 ease-in-out border border-white/20">
-
-                <!-- Close Button -->
-                <button id="menuClose"
-                    class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 hover:text-red-500 transition text-3xl leading-none">
-                    &times;
-                </button>
-
-                <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                    href="index.html">Home</a>
-                <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                    href="market.html">Market</a>
-                <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                    href="guide.html">Guide</a>
-                <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                    href="myDeck.html">MyDeck</a>
-                <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
-                    href="favourite.html">Favourite</a>
-            </div>
+    <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+      href="index.html">Home</a>
+    <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+      href="market.html">Market</a>
+    <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+      href="guide.html">Guide</a>
+    <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+      href="myDeck.html">MyDeck</a>
+    <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+      href="favourite.html">Favourite</a>
+  </div>
         </nav>
         <div class="flex flex-col lg:flex-row flex-1">
-            <aside
-                class="hidden lg:flex sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6 bg-background-light/60 dark:bg-background-dark/60 backdrop-blur-md">
-
-                <div class="flex h-full flex-col gap-6">
-                    <h1 class="text-lg font-bold text-black dark:text-white">My Decks</h1>
-                    <nav class="flex flex-col gap-2">
-                        <a class="flex items-center justify-between rounded-lg bg-primary/10 px-3 py-2 text-primary"
-                            href="#">
-                            <span class="text-sm font-bold">Charizard Burn</span>
-                            <span class="text-xs font-medium">60/60</span>
-                        </a>
-                    </nav>
-                    <button
-                        class="mt-auto flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 bg-primary text-sm font-bold leading-normal tracking-[0.015em] text-white">
-                        <span class="material-symbols-outlined text-xl">add_circle</span>
-                        <span>Create New Deck</span>
-                    </button>
-                </div>
-            </aside>
+           
             <main class="flex-1 p-6 lg:p-8">
                 <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
                     <div class="flex items-center gap-4">
@@ -183,31 +164,33 @@
                         <span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">60 / 60
                             Cards</span>
                     </div>
+                    <div id="adversaireCardContainer"
+                    class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                    <!-- divs to be generated by the js logic -->
+                </div>
                     <div class="flex items-center gap-2">
+                      
                         <button
                             class="flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-black/5 px-4 text-sm font-medium text-black dark:bg-white/5 dark:text-white">
-                            <span class="material-symbols-outlined text-lg">edit</span>
-                            <span>Edit Name</span>
-                        </button>
-                        <button
-                            class="flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-black/5 px-4 text-sm font-medium text-black dark:bg-white/5 dark:text-white">
-                            <span class="material-symbols-outlined text-lg">delete</span>
-                            <span>Delete Deck</span>
+                            <span class="material-symbols-outlined text-lg">person</span>
+                            <span>Adversaire</span>
                         </button>
                     </div>
                 </div>
                 <div
                     class="mb-8 rounded-xl border border-dashed border-black/20 bg-black/5 p-6 dark:border-white/20 dark:bg-white/5">
+                    
                     <div class="flex flex-col items-center justify-center gap-4 text-center">
-                        <span
-                            class="material-symbols-outlined text-4xl text-black/50 dark:text-white/50">add_photo_alternate</span>
-                        <p class="text-sm font-medium text-black/60 dark:text-white/60">Drag and drop cards here or
-                            search your collection</p>
-                        <button
-                            class="flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-5 text-sm font-bold text-white">
-                            <span class="material-symbols-outlined text-lg">search</span>
-                            <span>Add Cards</span>
-                        </button>
+                       adv-card1
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-4 text-center">
+                        adv-card2
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-4 text-center">
+                        my-card2
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-4 text-center">
+                        my-card1
                     </div>
                 </div>
                 <div id="myDeckContainer"
@@ -287,11 +270,8 @@
 
             </div>
         </footer>
-
     </div>
-    <script src="js/app.js"></script>
-    <script src="js/market.js"></script>
-    <script src="js/mydeck.js"></script>
+    
 
 </body>
 

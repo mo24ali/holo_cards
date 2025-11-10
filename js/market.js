@@ -490,7 +490,6 @@ function addToFavorite(itemId) {
      
         return;
     }
-
     favorite.push(item);
     alert(`${item.name} got added to the favorites`)
     localStorage.setItem("favorite", JSON.stringify(favorite));
