@@ -161,6 +161,8 @@
                     href="market.html">Market</a>
                 <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
                     href="guide.html">Guide</a>
+                     <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+                    href="play.html">PLAY</a>
                 <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
                     href="myDeck.html">MyDeck</a>
                 <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
@@ -197,15 +199,17 @@
                     class="mb-8 rounded-xl border border-dashed border-black/20 bg-black/5 p-6 dark:border-white/20 dark:bg-white/5">
                     <div class="flex flex-col items-center justify-center gap-4 text-center">
 
-                        <div class="opp-section flex gap-10 my-10">
-                            <div class="border border-dashed border-black/80 w-40 h-56 m-5"></div>
-                            <div class="border border-dashed border-black/80 w-40 h-56 m-5"></div>
-                            <div class="border border-dashed border-black/80 w-40 h-56 m-5"></div>
-                            <div class="border border-dashed border-black/80 w-40 h-56 m-5"></div>
+                        <div class="opp-section-container flex gap-10 my-10">
+                            <div class="opp_section border border-dashed border-black/80 w-40 h-56 m-5"></div>
+                            <div class="opp_section border border-dashed border-black/80 w-40 h-56 m-5"></div>
+                            <div class="opp_section border border-dashed border-black/80 w-40 h-56 m-5"></div>
+                            <div class="opp_section border border-dashed border-black/80 w-40 h-56 m-5"></div>
+                            <div class="opp_section border border-dashed border-black/80 w-40 h-56 m-5"></div>
                         </div>
 
-                        <div class="my_section grid grid-cols-4  gap-10 my-10">
+                        <div class="my_section_container flex gap-10 my-10">
                             <div class="my_section border border-dashed border-black/80 w-44 h-60 m-5 "></div>
+                            <div class="my_section border border-dashed border-black/80 w-44 h-60 m-5"></div>
                             <div class="my_section border border-dashed border-black/80 w-44 h-60 m-5"></div>
                             <div class="my_section border border-dashed border-black/80 w-44 h-60 m-5"></div>
                             <div class="my_section border border-dashed border-black/80 w-44 h-60 m-5"></div>
@@ -223,25 +227,7 @@
 
                 </div>
 
-
-                    <div id="popup" class="pop-up-mode hidden">
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <div id="popup" class=""></div>
 
                 <div id="myCardContainer"
                     class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -323,7 +309,7 @@
         </footer>
 
     </div>
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="js/play.js"></script>
     <script src="js/market.js"></script>
