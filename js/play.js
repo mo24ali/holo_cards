@@ -103,8 +103,8 @@ function setupDragAndDrop() {
             localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
 
             chooseMode(droppedCardId);
-            let randomIndex = Math.floor(Math.random() * 5);
-            setTimeout(opponentResponse(randomIndex), 2000);
+            let randomIndex = Math.floor(Math.random()*5);
+            setTimeout(() => opponentResponse(randomIndex) , 1500);
             selectedCard = null;
         });
     }
@@ -168,8 +168,7 @@ let opponentCards = [
         rarity: "Ultra Rare",
         quantity: 0,
      
-    }
-    ,
+    },
     {
         id: 2,
         img_url: "assets/charizard_cards/charizard_v1.png",
@@ -209,18 +208,30 @@ let opponentCards = [
 ]
 
 
+
+let indexes = [] ;
 function opponentResponse(index){
-    let choosen = opponentCards[index];
-   opponnent[index].innerHTML =  `
-                                                    <div id="card-${choosen.id}" draggable="true" 
-                                                        class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
-                                                                text-center hover:scale-105 transition">
-                                                        <img src="${choosen.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
-                                                        <h3 class="text-white text-lg font-semibold mb-1">${choosen.name}</h3>
-                                                        <p class="text-blue-300 text-sm mb-1">HP: ${choosen.hp}</p>
-                                                    </div>
-                                                `
+    // let index = Math.floor(Math.random() * 5);
+    // indexes.push(index);
+    if(opponnent[index].children.length > 0){
+        // alert("busted");
+        let newIndex = Math.floor(Math.random() * opponnent.length);
+        opponentResponse(newIndex);
+        
     }
+    let choosen = opponentCards[index];
+
+    opponnent[index].innerHTML = `
+                                    <div id="card-${choosen.id}" draggable="true" 
+                                        class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
+                                                text-center hover:scale-105 transition">
+                                        <img src="${choosen.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
+                                        <h3 class="text-white text-lg font-semibold mb-1">${choosen.name}</h3>
+                                        <p class="text-blue-300 text-sm mb-1">HP: ${choosen.hp}</p>
+                                    </div>
+                                `
+                                console.log(indexes);
+                            }
         
 
 
