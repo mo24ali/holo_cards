@@ -1,10 +1,7 @@
-/**
- * Game logic: Draw 5 random cards from the deck and allow drag & drop into the arena.
- */
 
 let myDecks = JSON.parse(localStorage.getItem("myDeck")) || [];
 const myHand = document.getElementById("my_hand");
-const arena = document.getElementById("my_section");
+const arena = document.getElementsByClassName("my_section");
 
 let myHandCards = JSON.parse(localStorage.getItem("myHandCards")) || [];
 let selectedCard = null;
@@ -35,15 +32,16 @@ function generateMyHandCards() {
 
         localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
 
-        myHand.innerHTML = myHandCards.map((card, index) => `
-            <div class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
-                        text-center hover:scale-105 transition" draggable="true" data-index="${index}">
-                <img src="${card.img_url}" 
-                    class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
-                <h3 class="text-white text-lg font-semibold mb-1">${card.name}</h3>
-                <p class="text-blue-300 text-sm mb-1">HP: ${card.hp}</p>
-            </div>
-        `).join("");
+        myHand.innerHTML = myHandCards.map(card => `
+                                                    <div id="card-${card.id}" draggable="true" 
+                                                        class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
+                                                                text-center hover:scale-105 transition">
+                                                        <img src="${card.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
+                                                        <h3 class="text-white text-lg font-semibold mb-1">${card.name}</h3>
+                                                        <p class="text-blue-300 text-sm mb-1">HP: ${card.hp}</p>
+                                                    </div>
+                                                `).join("");
+
 
         setupDragAndDrop();
         console.log("Draw complete:", myHandCards);
@@ -53,31 +51,8 @@ function generateMyHandCards() {
 }
 
 // === Function to handle drag and drop ===
-function setupDragAndDrop() {
-    selectedCard = null;
-
-    document.querySelectorAll(".my_card").forEach(card => {
-        card.addEventListener("dragstart", e => {
-            selectedCard = e.target;
-            e.dataTransfer.effectAllowed = "move";
-        });
-    });
-
-    arena.addEventListener("dragover", e => {
-        e.preventDefault();
-    });
-
-    arena.addEventListener("drop", e => {
-        e.preventDefault();
-        if (selectedCard) {
-            arena.appendChild(selectedCard);
-            selectedCard = null;
-            myHandCards.length --;
-        }
-    });
-}
-
 function drawCard() {
+
     if (myDecks.length === 0) {
         alert("No more cards in the deck!");
         return;
@@ -97,5 +72,72 @@ function drawCard() {
     generateMyHandCards();
 }
 
+function setupDragAndDrop() {
+    selectedCard = null;
+
+    document.querySelectorAll(".my_card").forEach(card => {
+        card.addEventListener("dragstart", e => {
+            selectedCard = e.target;
+            e.dataTransfer.effectAllowed = "move";
+        });
+    });
+
+    for (let el of arena) {
+        el.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+
+        el.addEventListener("drop", e => {
+            e.preventDefault();
+            if (selectedCard) {
+                if(!(el.children.length > 0)){
+                    el.appendChild(selectedCard);
+                selectedCard = null;
+                myHandCards = myHandCards.filter(card => card.id !== selectedCard.id);
+                localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
+                chooseMode(selectedCard.id);
+                }else{
+                    alert("3amra")
+                }
+            }
+           
+        });
+    }
+}
+
 // === Initialize when page loads ===
 document.addEventListener("DOMContentLoaded", generateMyHandCards);
+
+function chooseMode(cardId) {
+    let target = document.getElementById("popup");
+    target.innerHTML = `
+        <div class="container border bg-white z-10 p-6 rounded-xl shadow-lg text-center">
+            <h2 class="font-semibold text-lg mb-4">Choose your action</h2>
+            <div class="btnChoices flex justify-center gap-4">
+                <button id="attackBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                    Attack
+                </button>
+                <button id="defenseBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                    Defense
+                </button>
+            </div>
+        </div>
+    `;
+    target.classList.remove("hidden");
+
+    document.getElementById("attackBtn").addEventListener("click", () => attack(cardId));
+    document.getElementById("defenseBtn").addEventListener("click", () => defense(cardId));
+}
+
+function attack(cardId) {
+    const target = document.getElementById(cardId);
+    if (!target) return;
+    target.classList.add("opacity-50", "scale-90", "transition", "duration-300");
+    alert("Attack mode activated!");
+}
+
+function defense(cardItem) {
+    let target = myHandCards.find((item) => item.id === cardItem);
+    alert("defenseMode");
+    target.classList.add("hidden");
+}
