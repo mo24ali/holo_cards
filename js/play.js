@@ -4,6 +4,7 @@ const myHand = document.getElementById("my_hand");
 const arena = document.getElementsByClassName("my_section");
 const opponnent = document.getElementsByClassName("opp_section");
 let myHandCards = JSON.parse(localStorage.getItem("myHandCards")) || [];
+
 let selectedCard = null;
 
 function generateMyHandCards() {
@@ -119,10 +120,8 @@ function setupDragAndDrop() {
 
             chooseMode(droppedCardId);
 
-
-            calculateScore(selectedCard.id, opponentCards[randomIndex].id);
             selectedCard = null;
-
+            myCardIdHolder = selectedCard.id;
         });
     }
 
@@ -172,7 +171,11 @@ function chooseMode(cardId) {
         defense(cardId);
         setTimeout(() => opponentResponse(randomIndex), 2000);
     });
-    // document.getElementById("closePopup").addEventListener("click", () => popup.innerHTML = ""); // here to add the nondrag effect
+
+
+    console.log("in choose mode function");
+
+
 
 }
 
@@ -261,8 +264,9 @@ function opponentResponse(index) {
 
 
     chooseModeOpp(choosen.id);
+    oppCardIdHolder = choosen.id;
+    console.log(oppCardIdHolder);
 }
-//opponent mode choosing
 
 function chooseModeOpp(cardId) {
 
@@ -293,8 +297,12 @@ pt.innerHTML = `${LF} LF`;
 
 function calculateScore(myCardId, oppCardId) {
     myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
+
     JSON.stringify(myHandCards);
-    console.log(myHandCards);
+    if (true) {
+        console.log(myHandCards);
+        console.log("this the myHandsCard array");
+    }
     let oppCard = opponentCards.find((card) => card.id === oppCardId);
     let myCard = myHandCards.find((card) => card.id === myCardId);
     if (!oppCard) {
@@ -308,6 +316,15 @@ function calculateScore(myCardId, oppCardId) {
     } else {
         console.log("different");
     }
+    console.log("in calculate function");
 }
 
 
+let attackBtn = document.getElementById("attackBtnPt");
+let oppCardIdHolder = 0;
+let myCardIdHolder = 0;
+attackBtn.addEventListener('click', (myCardIdHolder, oppCardIdHolder) => {
+    calculateScore(myCardIdHolder, oppCardIdHolder);
+    console.log("clicked on the attack");
+
+})
