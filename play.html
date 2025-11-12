@@ -6,7 +6,7 @@
 <title>My Deck</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <link href="https://fonts.googleapis.com" rel="preconnect" />
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
 <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
@@ -173,15 +173,19 @@
         <div class="flex flex-col lg:flex-row flex-1">
             <!-- aside section used to show the cards in my deck -->
             <div
-                class=" flex flex-col hidden lg:flex sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6 bg-background-light/60 dark:bg-background-dark/60 backdrop-blur-md">
+                class=" flex flex-col hidden lg:flex sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-white/10 p-6 bg-background-light/60 dark:bg-background-dark/60 backdrop-blur-md " >
                 <h1 class="text-lg font-bold text-black dark:text-white my-5">My Decks</h1>
-                <button class="bg-blue-500 rounded " onclick="drawCard()">Draw card</button>
+                <button class="bg-blue-500 rounded hover:bg-blue-700 hover:text-white transition" onclick="drawCard()">Draw card</button>
 
 
-                <div class="swiper-wrapper">
-                    <!-- slides to be generated automaticcaly by the JS code -->
+                <div class="items-center">
+                   <h2 id="life-point" class="text-white m-10 text-center font-bold">LF</h2>
+
+
+                   <button id="attackBtnPt" class="bg-red-500 rounded ml-16 items-center justify-center px-8 py-2 hover:bg-red-700 hover:text-white transition ">
+                    Attack
+                   </button>
                 </div>
-
 
             </div>
             <!-- the main section -->
@@ -222,12 +226,11 @@
                 <!-- My hand section -->
 
                 <div id="my_hand"
-                    class="flex w-full items-center justify-between mb-8 rounded-xl border border-dashed border-black/20 bg-black/5 p-6 dark:border-white/20 dark:bg-white/5">
+                    class="flex w-full items-center justify-between mb-8 rounded-xl border border-dashed border-black/20 bg-black/5 p-6 dark:border-white/20 dark:bg-white/5 scroll-smooth overflow-scroll -ml-10">
                     <!-- to be filled automatically via js -->
-
                 </div>
 
-                    <div id="popup" class=""></div>
+                <div id="popup" class=""></div>
 
                 <div id="myCardContainer"
                     class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -314,6 +317,7 @@
     <script src="js/play.js"></script>
     <script src="js/market.js"></script>
     <script src="js/mydeck.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 

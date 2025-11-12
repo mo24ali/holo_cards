@@ -1,4 +1,4 @@
-
+// import Toastify from 'toastify-js'
 let myDecks = JSON.parse(localStorage.getItem("myDeck")) || [];
 const myHand = document.getElementById("my_hand");
 const arena = document.getElementsByClassName("my_section");
@@ -37,7 +37,7 @@ function generateMyHandCards() {
                                                         class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
                                                                 text-center hover:scale-105 transition">
                                                         <img src="${card.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
-                                                        <h3 class="text-white text-lg font-semibold mb-1">${card.name}</h3>
+                                                        <h3 class="text-white text-lg font-semibold mb-1 md:break-all">${card.name}</h3>
                                                         <p class="text-blue-300 text-sm mb-1">HP: ${card.hp}</p>
                                                     </div>
                                                 `).join("");
@@ -49,16 +49,31 @@ function generateMyHandCards() {
         console.error("Error generating hand:", e);
     }
 }
-
 // === Function to handle drag and drop ===
 function drawCard() {
 
     if (myDecks.length === 0) {
-        alert("No more cards in the deck!");
+        Toastify({
+            text: "wait for the opponent to play",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "linear-gradient(to right, #ec8632ff, #96c93d)",
+            },
+        }).showToast();
         return;
     }
     if (myHandCards.length >= 5) {
-        alert("Your hand is full!");
+        Toastify({
+            text: "Your hand is full",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: "linear-gradient(to right, #ec8632ff, #96c93d)",
+            },
+        }).showToast();
         return;
     }
 
@@ -103,9 +118,11 @@ function setupDragAndDrop() {
             localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
 
             chooseMode(droppedCardId);
-            let randomIndex = Math.floor(Math.random()*5);
-            setTimeout(() => opponentResponse(randomIndex) , 1500);
+
+
+            calculateScore(selectedCard.id, opponentCards[randomIndex].id);
             selectedCard = null;
+
         });
     }
 
@@ -115,6 +132,7 @@ document.addEventListener("DOMContentLoaded", generateMyHandCards);
 
 function chooseMode(cardId) {
     const popup = document.getElementById("popup");
+    let randomIndex = Math.floor(Math.random() * 5);
 
     popup.innerHTML = `
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -128,35 +146,49 @@ function chooseMode(cardId) {
             Defense
           </button>
         </div>
-        <button id="closePopup" class="text-gray-500 hover:text-gray-700 text-sm">Cancel</button>
+        
       </div>
     </div>
-  `;
+                        `;
 
     // Add event listeners
-    document.getElementById("attackBtn").addEventListener("click", () => attack(cardId));
-    document.getElementById("defenseBtn").addEventListener("click", () => defense(cardId));
-    document.getElementById("closePopup").addEventListener("click", () => popup.innerHTML = "");
+    document.getElementById("attackBtn").addEventListener("click", function () {
+        Toastify({
+            text: "wait for the opponent to play",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+        }).showToast();
+        attack(cardId);
+        setTimeout(() => opponentResponse(randomIndex), 2000);
+    });
+    document.getElementById("defenseBtn").addEventListener("click", function () {
+        Toastify({
+            text: "wait for the opponent to play",
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+        }).showToast();
+        defense(cardId);
+        setTimeout(() => opponentResponse(randomIndex), 2000);
+    });
+    // document.getElementById("closePopup").addEventListener("click", () => popup.innerHTML = ""); // here to add the nondrag effect
+
 }
-
-
 
 function attack(cardId) {
     const card = document.getElementById(`card-${cardId}`);
-    card.classList.remove("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300");
     card.classList.add("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
+    card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
-    
-    
 }
 
 function defense(cardId) {
     const card = document.getElementById(`card-${cardId}`);
-    card.classList.remove("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
-    card.classList.add("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300");
+    card.classList.add("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300", "rotate-90");
+    card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
 }
-
 
 let opponentCards = [
     {
@@ -167,7 +199,7 @@ let opponentCards = [
         price: 420.75,
         rarity: "Ultra Rare",
         quantity: 0,
-     
+
     },
     {
         id: 2,
@@ -207,32 +239,75 @@ let opponentCards = [
     }
 ]
 
-
-
-let indexes = [] ;
-function opponentResponse(index){
+function opponentResponse(index) {
     // let index = Math.floor(Math.random() * 5);
     // indexes.push(index);
-    if(opponnent[index].children.length > 0){
+    if (opponnent[index].children.length > 0) {
         // alert("busted");
         let newIndex = Math.floor(Math.random() * opponnent.length);
         opponentResponse(newIndex);
-        
+
     }
     let choosen = opponentCards[index];
 
     opponnent[index].innerHTML = `
-                                    <div id="card-${choosen.id}" draggable="true" 
-                                        class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
+                                    <div id="opp-card-${choosen.id}" class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
                                                 text-center hover:scale-105 transition">
                                         <img src="${choosen.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
                                         <h3 class="text-white text-lg font-semibold mb-1">${choosen.name}</h3>
                                         <p class="text-blue-300 text-sm mb-1">HP: ${choosen.hp}</p>
                                     </div>
                                 `
-                                console.log(indexes);
-                            }
-        
 
+
+    chooseModeOpp(choosen.id);
+}
+//opponent mode choosing
+
+function chooseModeOpp(cardId) {
+
+    let choice = Math.floor(Math.random() * 2);
+    if (choice == 1) {
+        attackOpp(cardId);
+    } else {
+        defenseOpp(cardId);
+    }
+
+}
+function attackOpp(cardId) {
+    const card = document.getElementById(`opp-card-${cardId}`);
+    card.classList.add("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
+    card.setAttribute("draggable", "false");
+    document.getElementById("popup").innerHTML = "";
+}
+function defenseOpp(cardId) {
+    const card = document.getElementById(`opp-card-${cardId}`);
+
+    card.classList.add("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300", "rotate-90");
+    card.setAttribute("draggable", "false");
+    document.getElementById("popup").innerHTML = "";
+}
+let LF = 0;
+let pt = document.getElementById("life-point");
+pt.innerHTML = `${LF} LF`;
+
+function calculateScore(myCardId, oppCardId) {
+    myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
+    JSON.stringify(myHandCards);
+    console.log(myHandCards);
+    let oppCard = opponentCards.find((card) => card.id === oppCardId);
+    let myCard = myHandCards.find((card) => card.id === myCardId);
+    if (!oppCard) {
+        console.log("unfound opp");
+        console.log(oppCard.hp);
+    } else if (!myCard) {
+        console.log("unfound me");
+    }
+    if (myCard.hp > oppCard.hp) {
+        console.log("mine bigger than yours");
+    } else {
+        console.log("different");
+    }
+}
 
 
