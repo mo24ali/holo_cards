@@ -4,7 +4,8 @@ const myHand = document.getElementById("my_hand");
 const arena = document.getElementsByClassName("my_section");
 const opponnent = document.getElementsByClassName("opp_section");
 let myHandCards = JSON.parse(localStorage.getItem("myHandCards")) || [];
-
+let oppCardIdHolder = null;
+let myCardIdHolder = null; 
 let selectedCard = null;
 
 function generateMyHandCards() {
@@ -50,7 +51,6 @@ function generateMyHandCards() {
         console.error("Error generating hand:", e);
     }
 }
-// === Function to handle drag and drop ===
 function drawCard() {
 
     if (myDecks.length === 0) {
@@ -79,7 +79,6 @@ function drawCard() {
     }
 
     const randomIndex = Math.floor(Math.random() * myDecks.length);
-    // const randomIndex = myHandCards.length -1 ; 
     const drawnCard = myDecks.splice(randomIndex, 1)[0];
     myHandCards.push(drawnCard);
 
@@ -88,7 +87,6 @@ function drawCard() {
 
     generateMyHandCards();
 }
-
 function setupDragAndDrop() {
     selectedCard = null;
 
@@ -119,16 +117,18 @@ function setupDragAndDrop() {
             localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
 
             chooseMode(droppedCardId);
-
+            myCardIdHolder = Number(selectedCard.id.replace("card-",""));              // it takes the id card-4
+                                                                                        //but after the .replace() and number now we can take the integer id
+            
+            console.log(myCardIdHolder);
+            
             selectedCard = null;
-            myCardIdHolder = selectedCard.id;
+
         });
     }
 
 }
-
 document.addEventListener("DOMContentLoaded", generateMyHandCards);
-
 function chooseMode(cardId) {
     const popup = document.getElementById("popup");
     let randomIndex = Math.floor(Math.random() * 5);
@@ -178,21 +178,18 @@ function chooseMode(cardId) {
 
 
 }
-
 function attack(cardId) {
     const card = document.getElementById(`card-${cardId}`);
     card.classList.add("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
     card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
 }
-
 function defense(cardId) {
     const card = document.getElementById(`card-${cardId}`);
     card.classList.add("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300", "rotate-90");
     card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
 }
-
 let opponentCards = [
     {
         id: 1,
@@ -241,7 +238,6 @@ let opponentCards = [
         quantity: 0,
     }
 ]
-
 function opponentResponse(index) {
     // let index = Math.floor(Math.random() * 5);
     // indexes.push(index);
@@ -264,10 +260,11 @@ function opponentResponse(index) {
 
 
     chooseModeOpp(choosen.id);
-    oppCardIdHolder = choosen.id;
+    oppCardIdHolder = choosen.id;                   //it returns integer to the id
+    console.log("in the opponentResponse");
+    
     console.log(oppCardIdHolder);
 }
-
 function chooseModeOpp(cardId) {
 
     let choice = Math.floor(Math.random() * 2);
@@ -296,35 +293,55 @@ let pt = document.getElementById("life-point");
 pt.innerHTML = `${LF} LF`;
 
 function calculateScore(myCardId, oppCardId) {
-    myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
+    // myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
 
-    JSON.stringify(myHandCards);
-    if (true) {
-        console.log(myHandCards);
-        console.log("this the myHandsCard array");
-    }
+    // JSON.stringify(myHandCards);
     let oppCard = opponentCards.find((card) => card.id === oppCardId);
-    let myCard = myHandCards.find((card) => card.id === myCardId);
+    let myCard = myDecks.find((card) => card.id === myCardId);
     if (!oppCard) {
-        console.log("unfound opp");
-        console.log(oppCard.hp);
-    } else if (!myCard) {
-        console.log("unfound me");
+        console.log("Opponent card not found!");
+        return;
     }
+    if (!myCard) {
+        console.log(myHandCards); //test
+        
+        console.log("My card not found!");
+        return;
+    }
+
     if (myCard.hp > oppCard.hp) {
-        console.log("mine bigger than yours");
-    } else {
-        console.log("different");
+        LF += 10;
+        pt.innerHTML = `${LF} LF`;
+        Toastify({ text: "You won this round!", duration: 2000, position: "center"}).showToast();
+    }else if(myCard.hp == oppCard.hp){
+        LF += 0;
+        pt.innerHTML = `${LF} LF`;
+        Toastify({ text: "You got equal HP", duration: 2000 , position: "center" }).showToast();
+    }else {
+        LF -= 5;
+        pt.innerHTML = `${LF} LF`;
+        Toastify({ text: "You lost this round!", duration: 2000 , position: "center" }).showToast();
     }
+
     console.log("in calculate function");
 }
 
+const attackBtn = document.getElementById("attackBtnPt");
 
-let attackBtn = document.getElementById("attackBtnPt");
-let oppCardIdHolder = 0;
-let myCardIdHolder = 0;
-attackBtn.addEventListener('click', (myCardIdHolder, oppCardIdHolder) => {
+attackBtn.addEventListener('click', () => {
+    if (!myCardIdHolder || !oppCardIdHolder) {
+        console.log("You must select both cards before attacking!");
+        Toastify({
+            text: "Select both cards before attacking!",
+            duration: 2000,
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+        }).showToast();
+        return;
+    }
+
+    console.log("My Card:", myCardIdHolder);
+    console.log("Opponent Card:", oppCardIdHolder);
+
     calculateScore(myCardIdHolder, oppCardIdHolder);
-    console.log("clicked on the attack");
+});
 
-})
