@@ -63,7 +63,11 @@ function generateMyHandCards() {
                                                 `).join("");
 
 
+         // Generate cards for mobile hand
+        syncMobileHand();
+
         setupDragAndDrop();
+        setupMobileHandInteractions();
         console.log("Draw complete:", myHandCards);
     } catch (e) {
         console.error("Error generating hand:", e);
@@ -432,28 +436,28 @@ function calculateScore(myCardId, oppCardId) {
 
 
 
-function victory(myHp, oppHp) {
-    if (myHp > oppHp) {
-        popupVictory.innerHTML = `
-            <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center w-80">
-                    <h2 class="font-semibold text-lg mb-4">Choose your action</h2>
-                    <div class="flex justify-center gap-4 mb-4">
-                    <button id="attackBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
-                        Attack
-                    </button>
-                    <button id="defenseBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
-                        Defense
-                    </button>
-                </div>
+// function victory(myHp, oppHp) {
+//     if (myHp > oppHp) {
+//         popupVictory.innerHTML = `
+//             <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+//                 <div class="bg-white p-6 rounded-xl shadow-lg text-center w-80">
+//                     <h2 class="font-semibold text-lg mb-4">Choose your action</h2>
+//                     <div class="flex justify-center gap-4 mb-4">
+//                     <button id="attackBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+//                         Attack
+//                     </button>
+//                     <button id="defenseBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+//                         Defense
+//                     </button>
+//                 </div>
                 
-            </div>
-            </div>
+//             </div>
+//             </div>
         
 
-        `
-    }
-}
+//         `
+//     }
+// }
 //added some animation to the arena
 
 function disableGameplay() {
@@ -538,3 +542,147 @@ attackBtnMob.addEventListener('click', () => {
 window.addEventListener('reload', audioStart.play());
 window.addEventListener('load', audioStart.play());
 window.addEventListener('click', audioStart.play());
+
+
+////////////////////////////////////////////////////////////mobile section /////////////////////////////////////////////////////////////////////////////////////////////
+// Mobile hand containers
+const mobileHand = document.getElementById('mobile_hand');
+
+
+function syncMobileHand() {
+    mobileHand.innerHTML = myHandCards.map(card => `
+        <div id="mobile-card-${card.id}" 
+            class="mobile_card bg-gradient-to-br from-gray-800 to-gray-900 p-3 rounded-xl shadow-md hover:shadow-xl 
+                    text-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer
+                    border border-gray-600 hover:border-gray-500 min-w-[100px] flex-shrink-0 transform-gpu">
+            <div class="relative mb-2">
+                <img src="${card.img_url}" 
+                     class="w-full h-16 object-cover rounded-lg border border-gray-600 shadow-inner" 
+                     draggable="false"
+                     alt="${card.name}"
+                     loading="lazy">
+                <div class="absolute top-1 right-1 bg-red-500 text-white text-[10px] px-1 rounded">
+                    HP
+                </div>
+            </div>
+            <h3 class="text-white text-xs font-semibold mb-1 line-clamp-2 leading-tight px-1">
+                ${card.name}
+            </h3>
+            <div class="flex items-center justify-between text-[10px] px-1">
+                <span class="text-blue-300 font-medium">${card.hp} HP</span>
+                <span class="text-yellow-400 text-[8px]">${card.rarity}</span>
+            </div>
+        </div>
+    `).join("");
+}
+
+function setupMobileHandInteractions() {
+    document.querySelectorAll(".mobile_card").forEach(card => {
+        card.addEventListener("click", function() {
+            const cardId = this.id.replace("mobile-card-", "");
+            handleMobileCardSelection(cardId);
+        });
+    });
+}
+
+function handleMobileCardSelection(cardId) {
+    const mySections = document.querySelectorAll(".my_section");
+    let emptySection = null;
+    
+    for (let section of mySections) {
+        if (section.children.length === 0) {
+            emptySection = section;
+            break;
+        }
+    }
+    
+    if (!emptySection) {
+        alert("No empty slots available!");
+        return;
+    }
+    
+    // Remove card from hand
+    const cardIndex = myHandCards.findIndex(card => card.id == cardId);
+    if (cardIndex !== -1) {
+        const droppedCard = myHandCards.splice(cardIndex, 1)[0];
+        localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
+        
+        // Update both hand displays
+        generateMyHandCards();
+        
+        // Place card in field
+        emptySection.innerHTML = `
+            <div id="card-${droppedCard.id}" 
+                class="my_card bg-gradient-to-br from-gray-800 to-gray-900 p-2 rounded-lg shadow-md 
+                        text-center border border-gray-600 min-w-full">
+                <div class="relative mb-1">
+                    <img src="${droppedCard.img_url}" 
+                         class="w-full h-16 object-cover rounded-md border border-gray-600" 
+                         draggable="false"
+                         alt="${droppedCard.name}">
+                    <div class="absolute top-1 right-1 bg-red-500 text-white text-[10px] px-1 rounded">
+                        HP
+                    </div>
+                </div>
+                <h3 class="text-white text-xs font-semibold mb-1 line-clamp-2">${droppedCard.name}</h3>
+                <div class="flex justify-between text-[10px]">
+                    <span class="text-blue-300">${droppedCard.hp} HP</span>
+                    <span class="text-yellow-400">${droppedCard.rarity}</span>
+                </div>
+            </div>
+        `;
+        
+        myCardIdHolder = Number(droppedCard.id);
+        console.log("Mobile card placed:", myCardIdHolder);
+        
+        // Play sound
+        let audioDrop = new Audio("../assets/cardDropSoundEffects.m4a");
+        audioDrop.play();
+        
+        // Show action selection
+        chooseMode(droppedCard.id);
+        
+        // Close mobile hand panel
+        closeMobileHand();
+    }
+}
+
+function closeMobileHand() {
+    const mobileHandSection = document.getElementById("mobileHandSection");
+    mobileHandSection.classList.add("opacity-0", "pointer-events-none");
+    mobileHandSection.classList.remove("opacity-100", "pointer-events-auto");
+    mobileHandSection.querySelector("div").classList.add("translate-y-full");
+}
+
+// Mobile hand toggle functionality
+document.addEventListener("DOMContentLoaded", function() {
+    const mobileHandToggle = document.getElementById('mobileHandToggle');
+    const mobileHandSection = document.getElementById('mobileHandSection');
+    const mobileHandClose = document.getElementById('mobileHandClose');
+
+    mobileHandToggle.addEventListener('click', function() {
+        mobileHandSection.classList.remove('opacity-0', 'pointer-events-none');
+        mobileHandSection.classList.add('opacity-100', 'pointer-events-auto');
+        mobileHandSection.querySelector('div').classList.remove('translate-y-full');
+    });
+
+    mobileHandClose.addEventListener('click', closeMobileHand);
+
+    mobileHandSection.addEventListener('click', function(e) {
+        if (e.target === mobileHandSection) {
+            closeMobileHand();
+        }
+    });
+
+    // Initialize the game
+    generateMyHandCards();
+});
+
+
+
+
+
+
+
+
+ 
