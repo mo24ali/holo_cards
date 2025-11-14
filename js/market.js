@@ -625,6 +625,8 @@ let filteredContent = [];
 applyPagination();
 
 
+
+
 rarityCheckboxes.forEach(cb => cb.addEventListener("change", applyPagination));
 
 function applyPagination() {
