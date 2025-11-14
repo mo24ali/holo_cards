@@ -674,7 +674,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Initialize the game
     generateMyHandCards();
 });
 
