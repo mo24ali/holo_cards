@@ -72,13 +72,17 @@
             <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="guide.html">Guide</a>
             <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="myDeck.html">MyDeck</a>
             <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70" href="play.html">PLAY</a>
-
             <a class="text-sm font-medium leading-normal text-black/70 dark:text-white/70"
                 href="favourite.html">Favorite</a>
         </nav>
-
+        <!-- Mobile Filter Button -->
+        <button id="mobileFilterBtn"
+            class="lg:hidden flex items-center px-2 py-2 rounded-lg bg-black/5 dark:bg-white/5 text-black dark:text-white">
+            <span class="material-symbols-outlined">filter_list</span>
+            <span class="text-sm font-medium hidden xs:inline">Filters</span>
+        </button>
         <button id="burgerBtn"
-            class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+            class="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none -ml-13">
             <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
             <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
             <span class="w-6 h-0.5 bg-black dark:bg-white transition"></span>
@@ -128,33 +132,142 @@
             </div>
         </div>
     </header>
+
     <nav id="mobileMenu"
-        class="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-lg bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-in-out md:hidden">
-
+        class="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-sm bg-black/60 opacity-0 pointer-events-none transition-all duration-300 ease-in-out ">
         <div
-            class="menu-content relative bg-white/90 dark:bg-gray-900/90 rounded-2xl shadow-2xl px-10 py-8 flex flex-col items-center gap-6 transform scale-90 opacity-0 transition-all duration-300 ease-in-out border border-white/20">
-
-            <!-- Close Button -->
+            class="menu-content relative bg-white/90 dark:bg-gray-900/90 rounded-xl shadow-2xl px-6 py-6 flex flex-col items-center gap-4 transform scale-90 opacity-0 transition-all duration-300 ease-in-out border border-white/20 w-11/12 max-w-xs">
             <button id="menuClose"
-                class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 hover:text-red-500 transition text-3xl leading-none">
+                class="absolute top-3 right-3 text-gray-700 dark:text-gray-300 hover:text-red-500 transition text-2xl leading-none touch-target">
                 &times;
             </button>
-
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="index.html">Home</a>
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="market.html">Market</a>
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="guide.html">Guide</a>
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="play.html">PLAY</a>
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="myDeck.html">MyDeck</a>
-            <a class="text-xl font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
+            <a class="text-base font-semibold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition smooth-transition touch-target w-full text-center py-3"
                 href="favourite.html">Favourite</a>
         </div>
     </nav>
+    <!-- Mobile Filter Menu -->
+    <div id="mobileFilterMenu"
+        class="lg:hidden fixed inset-0 z-30 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div
+            class="absolute top-0 left-0 h-full w-80 max-w-[90vw] bg-white transform -translate-x-full transition-transform duration-300 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-black">Filters</h2>
+                    <button id="mobileFilterClose"
+                        class="text-gray-700 hover:text-red-500 transition text-2xl leading-none">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <h1 class="text-base font-medium leading-normal text-black mb-3">Categories</h1>
+                        <div class="flex flex-col gap-2">
+                            <a class="text-sm font-medium text-primary py-1" href="#">All Cards</a>
+                            <a class="text-sm font-medium text-black/70 hover:text-primary py-1" href="#">Sword &
+                                Shield</a>
+                            <a class="text-sm font-medium text-black/70 hover:text-primary py-1" href="#">Sun & Moon</a>
+                            <a class="text-sm font-medium text-black/70 hover:text-primary py-1" href="#">XY</a>
+                            <a class="text-sm font-medium text-black/70 hover:text-primary py-1" href="#">Black &
+                                White</a>
+                            <a class="text-sm font-medium text-black/70 hover:text-primary py-1" href="#">Classic</a>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-black/10 pt-4">
+                        <h1 class="text-base font-medium leading-normal text-black mb-3">Filters</h1>
+                        <label class="flex flex-col">
+                            <p class="pb-2 text-sm font-medium leading-normal text-black">Sort by</p>
+                            <select
+                                class="h-12 w-full rounded-lg border border-gray-300 bg-white p-3 text-sm font-normal leading-normal text-black focus:outline-0 focus:ring-2 focus:ring-primary/50">
+                                <option value="byPrice">Price: Low to High</option>
+                                <option value="byPriceDescent">Price: High to Low</option>
+                                <option value="alphabetically">Name (A-Z)</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div>
+                        <h2 class="pb-3 text-sm font-medium leading-tight tracking-[-0.015em] text-black">Card Type</h2>
+                        <div class="flex flex-col gap-2">
+                            <label class="flex items-center gap-2">
+                                <input checked=""
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">VMAX</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input checked=""
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">GX</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">EX</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">Basic</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="pb-3 text-sm font-medium leading-tight tracking-[-0.015em] text-black">Rarity</h2>
+                        <div class="flex flex-col gap-2">
+                            <label class="flex items-center gap-2">
+                                <input
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">Ultra Rare</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input checked=""
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">Common</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">Rare</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    class="h-4 w-4 rounded border-gray-300 bg-white text-primary focus:ring-primary/50"
+                                    type="checkbox" />
+                                <span class="text-sm text-black/80">Legendary</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button
+                        class="mt-6 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-black/5 text-black gap-2 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-black/10">
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-1">
+        <!-- Desktop Sidebar -->
         <aside
             class="overflow-y-auto max-h-[80vh] hidden lg:block sticky top-[65px] h-[calc(100vh-65px)] w-72 flex-shrink-0 border-r border-black/10 p-6 dark:border-white/10 overflow-scroll py-3">
             <div class="flex h-full flex-col gap-6">
@@ -287,20 +400,14 @@
                     <span class="material-symbols-outlined text-xl">chevron_right</span>
                 </button>
             </div>
-
         </main>
-
-    </div>
     </div>
 
-    <footer class="bg-gray-950 border-t   border-gray-800 py-12 px-4 sm:px-10 mt-16  ">
+    <footer class="bg-gray-950 border-t border-gray-800 py-12 px-4 sm:px-10 mt-16">
         <div class="max-w-7xl mx-auto">
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 ">
-
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                 <div class="md:col-span-1">
                     <a href="/" class="flex items-center gap-3 mb-4">
-
                         <div class="flex items-center gap-3">
                             <div class="relative">
                                 <div class="w-16 h-16 bg-white absolute -top-3 -left-5"></div>
@@ -317,7 +424,6 @@
                         Catch,
                         Collect,
                         Hold.
-
                     </p>
                 </div>
 
@@ -358,11 +464,34 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
-
         </div>
     </footer>
+    <!-- added the script to manage the filters section on the mobile for more responsiveness -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+            const mobileFilterMenu = document.getElementById('mobileFilterMenu');
+            const mobileFilterClose = document.getElementById('mobileFilterClose');
+
+            mobileFilterBtn.addEventListener('click', function () {
+                mobileFilterMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileFilterMenu.querySelector('div').classList.remove('-translate-x-full');
+            });
+
+            mobileFilterClose.addEventListener('click', function () {
+                mobileFilterMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileFilterMenu.querySelector('div').classList.add('-translate-x-full');
+            });
+
+            mobileFilterMenu.addEventListener('click', function (e) {
+                if (e.target === mobileFilterMenu) {
+                    mobileFilterMenu.classList.add('opacity-0', 'pointer-events-none');
+                    mobileFilterMenu.querySelector('div').classList.add('-translate-x-full');
+                }
+            });
+        });
+    </script>
 
     <script src="js/market.js"></script>
     <script src="js/app.js"></script>
