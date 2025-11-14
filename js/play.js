@@ -134,11 +134,12 @@ function setupDragAndDrop() {
             localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
             chooseMode(droppedCardId);
             myCardIdHolder = Number(selectedCard.id.replace("card-", ""));              // it takes the id card-4
-            //but after the .replace() and number now we can take the integer id
+                                //but after the .replace() and number now we can take the integer id
             console.log(myCardIdHolder);
 
             selectedCard = null;
-            
+            let audioDrop = new Audio("../assets/cardDropSoundEffects.m4a");
+            audioDrop.play();
 
         });
     }
@@ -536,4 +537,4 @@ attackBtnMob.addEventListener('click', () => {
 
 window.addEventListener('reload', audioStart.play());
 window.addEventListener('load', audioStart.play());
-// window.addEventListener('click', audioStart.play());
+window.addEventListener('click', audioStart.play());
