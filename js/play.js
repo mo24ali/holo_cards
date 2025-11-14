@@ -5,9 +5,9 @@ const arena = document.getElementsByClassName("my_section");
 const opponnent = document.getElementsByClassName("opp_section");
 let myHandCards = JSON.parse(localStorage.getItem("myHandCards")) || [];
 let oppCardIdHolder = null;
-let myCardIdHolder = null; 
+let myCardIdHolder = null;
 let selectedCard = null;
-
+let verifier = 1;
 function generateMyHandCards() {
     try {
         const deckSize = myDecks.length;
@@ -36,12 +36,29 @@ function generateMyHandCards() {
 
         myHand.innerHTML = myHandCards.map(card => `
                                                     <div id="card-${card.id}" draggable="true" 
-                                                        class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
-                                                                text-center hover:scale-105 transition">
-                                                        <img src="${card.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
-                                                        <h3 class="text-white text-lg font-semibold mb-1 md:break-all">${card.name}</h3>
-                                                        <p class="text-blue-300 text-sm mb-1">HP: ${card.hp}</p>
-                                                    </div>
+    class="my_card bg-gradient-to-br from-gray-800 to-gray-900 p-2 xs:p-3 sm:p-4 rounded-lg sm:rounded-xl shadow-md hover:shadow-xl 
+            text-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-grab active:cursor-grabbing
+            border border-gray-600 hover:border-gray-500 min-w-[110px] xs:min-w-[120px] sm:min-w-[140px] md:min-w-[150px]
+            flex-shrink-0 transform-gpu">
+    <div class="relative mb-1 xs:mb-2 sm:mb-3">
+        <img src="${card.img_url}" 
+             class="w-full h-20 xs:h-24 sm:h-32 md:h-36 lg:h-40 xl:h-44 object-cover rounded-md sm:rounded-lg 
+                    border border-gray-600 shadow-inner" 
+             draggable="false"
+             alt="${card.name}"
+             loading="lazy">
+        <div class="absolute top-1 right-1 xs:top-1.5 xs:right-1.5 bg-red-500 text-white text-[10px] xs:text-xs px-1 rounded">
+            HP
+        </div>
+    </div>
+    <h3 class="text-white text-xs xs:text-sm sm:text-base font-semibold mb-1 xs:mb-1.5 line-clamp-2 leading-tight px-1">
+        ${card.name}
+    </h3>
+    <div class="flex items-center justify-between text-[10px] xs:text-xs sm:text-sm px-1 xs:px-2">
+        <span class="text-blue-300 font-medium">${card.hp} HP</span>
+        <span class="text-yellow-400 text-[8px] xs:text-[10px]">${card.rarity}</span>
+    </div>
+</div>
                                                 `).join("");
 
 
@@ -104,25 +121,22 @@ function setupDragAndDrop() {
             e.preventDefault();
             if (!selectedCard) return;
 
-            if (el.children.length > 0) {
+            if (el.children.length > 1) {
                 alert("3amra!");
                 return;
             }
-
             el.appendChild(selectedCard);
-
             const droppedCardId = selectedCard.id.replace("card-", "");
-
             myHandCards = myHandCards.filter(card => card.id != droppedCardId);
             localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
-
             chooseMode(droppedCardId);
-            myCardIdHolder = Number(selectedCard.id.replace("card-",""));              // it takes the id card-4
-                                                                                        //but after the .replace() and number now we can take the integer id
-            
+            myCardIdHolder = Number(selectedCard.id.replace("card-", ""));              // it takes the id card-4
+            //but after the .replace() and number now we can take the integer id
             console.log(myCardIdHolder);
-            
+
             selectedCard = null;
+            let audio = new Audio("../assets/cardDropSoundEffects.m4a");
+            audio.play();
 
         });
     }
@@ -182,11 +196,14 @@ function attack(cardId) {
     const card = document.getElementById(`card-${cardId}`);
     card.classList.add("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
     card.setAttribute("draggable", "false");
+    verifier = 1;
     document.getElementById("popup").innerHTML = "";
+
 }
 function defense(cardId) {
     const card = document.getElementById(`card-${cardId}`);
     card.classList.add("ring-4", "ring-blue-500", "opacity-80", "transition", "duration-300", "rotate-90");
+    verifier = 0;
     card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
 }
@@ -250,19 +267,59 @@ function opponentResponse(index) {
     let choosen = opponentCards[index];
 
     opponnent[index].innerHTML = `
-                                    <div id="opp-card-${choosen.id}" class="my_card bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-xl shadow-lg
-                                                text-center hover:scale-105 transition">
-                                        <img src="${choosen.img_url}" class="w-full h-48 object-cover rounded-lg mb-3 border border-gray-700" draggable="false">
-                                        <h3 class="text-white text-lg font-semibold mb-1">${choosen.name}</h3>
-                                        <p class="text-blue-300 text-sm mb-1">HP: ${choosen.hp}</p>
-                                    </div>
+                                    <div id="opp-card-${choosen.id}" 
+     class="my_card bg-gradient-to-br from-red-800/90 to-red-900/80 p-2 xs:p-3 sm:p-4 rounded-lg sm:rounded-xl 
+            shadow-lg hover:shadow-xl text-center transition-all duration-300 cursor-default
+            border-2 border-red-600/50 hover:border-red-500/70 min-w-[110px] xs:min-w-[120px] sm:min-w-[140px] md:min-w-[150px]
+            flex-shrink-0 transform-gpu group opacity-90 hover:opacity-100">
+    
+    <!-- Image Container -->
+    <div class="relative mb-1 xs:mb-2 sm:mb-3 overflow-hidden rounded-md sm:rounded-lg">
+        <img src="${choosen.img_url}" 
+             class="w-full h-20 xs:h-24 sm:h-32 md:h-36 lg:h-40 xl:h-44 object-cover rounded-md sm:rounded-lg 
+                    border-2 border-red-600/60 shadow-inner" 
+             draggable="false"
+             alt="${choosen.name}"
+             loading="lazy">
+        
+        <!-- Enemy HP Badge -->
+        <div class="absolute top-1 left-1 bg-gradient-to-r from-red-600 to-red-700 text-white 
+                   text-[9px] xs:text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm border border-red-400">
+            💀 ${choosen.hp}
+        </div>
+        
+        <!-- Enemy Rarity Badge -->
+        <div class="absolute top-1 right-1 bg-black/80 text-red-300 
+                   text-[8px] xs:text-[9px] font-medium px-1.5 py-0.5 rounded-full border border-red-500/50">
+            ${choosen.rarity.split(' ')[0]}
+        </div>
+    </div>
+
+    <!-- Card Name -->
+    <h3 class="text-white text-xs xs:text-sm font-bold mb-1 xs:mb-1.5 line-clamp-2 leading-tight 
+               px-1 group-hover:text-red-200 transition-colors">
+        ${choosen.name}
+    </h3>
+
+    <!-- Stats Bar -->
+    <div class="flex items-center justify-between bg-red-900/40 rounded-full px-2 xs:px-3 py-1 xs:py-1.5 
+                border border-red-600/30 backdrop-blur-sm">
+        <div class="flex items-center gap-1">
+            <span class="text-red-300 text-[10px] xs:text-xs font-semibold">${choosen.hp}</span>
+            <span class="text-red-400 text-[8px] xs:text-[10px]">HP</span>
+        </div>
+        
+        <!-- Enemy Type Indicator -->
+        <div class="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-red-400 shadow-sm animate-pulse"></div>
+    </div>
+</div>
                                 `
 
 
     chooseModeOpp(choosen.id);
     oppCardIdHolder = choosen.id;                   //it returns integer to the id
     console.log("in the opponentResponse");
-    
+
     console.log(oppCardIdHolder);
 }
 function chooseModeOpp(cardId) {
@@ -280,6 +337,7 @@ function attackOpp(cardId) {
     card.classList.add("ring-4", "ring-red-500", "scale-105", "transition", "duration-300");
     card.setAttribute("draggable", "false");
     document.getElementById("popup").innerHTML = "";
+
 }
 function defenseOpp(cardId) {
     const card = document.getElementById(`opp-card-${cardId}`);
@@ -290,8 +348,9 @@ function defenseOpp(cardId) {
 }
 let LF = 0;
 let pt = document.getElementById("life-point");
+let ptMob = document.getElementById("life-point-mobile");
 pt.innerHTML = `${LF} LF`;
-
+ptMob.innerHTML = `${LF} LF`;
 function calculateScore(myCardId, oppCardId) {
     // myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
 
@@ -304,7 +363,7 @@ function calculateScore(myCardId, oppCardId) {
     }
     if (!myCard) {
         console.log(myHandCards); //test
-        
+
         console.log("My card not found!");
         return;
     }
@@ -312,15 +371,21 @@ function calculateScore(myCardId, oppCardId) {
     if (myCard.hp > oppCard.hp) {
         LF += 10;
         pt.innerHTML = `${LF} LF`;
-        Toastify({ text: "You won this round!", duration: 2000, position: "center"}).showToast();
-    }else if(myCard.hp == oppCard.hp){
+        ptMob.innerHTML = `${LF} LF`;
+
+        Toastify({ text: "You won this round!", duration: 2000, position: "center" }).showToast();
+    } else if (myCard.hp == oppCard.hp) {
         LF += 0;
         pt.innerHTML = `${LF} LF`;
-        Toastify({ text: "You got equal HP", duration: 2000 , position: "center" }).showToast();
-    }else {
+        ptMob.innerHTML = `${LF} LF`;
+
+        Toastify({ text: "You got equal HP", duration: 2000, position: "center" }).showToast();
+    } else {
         LF -= 5;
         pt.innerHTML = `${LF} LF`;
-        Toastify({ text: "You lost this round!", duration: 2000 , position: "center" }).showToast();
+        ptMob.innerHTML = `${LF} LF`;
+
+        Toastify({ text: "You lost this round!", duration: 2000, position: "center" }).showToast();
     }
 
     console.log("in calculate function");
@@ -329,6 +394,8 @@ function calculateScore(myCardId, oppCardId) {
 const attackBtn = document.getElementById("attackBtnPt");
 
 attackBtn.addEventListener('click', () => {
+
+    // console.log(verifier.dataset.id);
     if (!myCardIdHolder || !oppCardIdHolder) {
         console.log("You must select both cards before attacking!");
         Toastify({
@@ -336,12 +403,58 @@ attackBtn.addEventListener('click', () => {
             duration: 2000,
             backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
         }).showToast();
+
         return;
     }
+    if (verifier === 0) {
+        console.log("defender");
 
-    console.log("My Card:", myCardIdHolder);
-    console.log("Opponent Card:", oppCardIdHolder);
+        Toastify({
+            text: "this is on defense",
+            duration: 2000,
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+        }).showToast();
+    }
+    else if (verifier === 1) {
+        console.log("My Card:", myCardIdHolder);
+        console.log("Opponent Card:", oppCardIdHolder);
 
-    calculateScore(myCardIdHolder, oppCardIdHolder);
+        calculateScore(myCardIdHolder, oppCardIdHolder);
+        let audioAttack = new Audio("../assets/AttackSoundEffects.m4a");
+        audioAttack.play();
+    }
 });
 
+let attackBtnMob = document.getElementById("attackBtnPtMobile");
+
+attackBtnMob.addEventListener('click', () => {
+
+    // console.log(verifier.dataset.id);
+    if (!myCardIdHolder || !oppCardIdHolder) {
+        console.log("You must select both cards before attacking!");
+        Toastify({
+            text: "Select both cards before attacking!",
+            duration: 2000,
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+        }).showToast();
+
+        return;
+    }
+    if (verifier === 0) {
+        console.log("defender");
+
+        Toastify({
+            text: "this is on defense",
+            duration: 2000,
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)"
+        }).showToast();
+    }
+    else if (verifier === 1) {
+        console.log("My Card:", myCardIdHolder);
+        console.log("Opponent Card:", oppCardIdHolder);
+
+        calculateScore(myCardIdHolder, oppCardIdHolder);
+        let audioAttack = new Audio("../assets/AttackSoundEffects.m4a");
+        audioAttack.play();
+    }
+});
