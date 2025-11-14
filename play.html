@@ -218,7 +218,7 @@
             </div>
         </nav>
 
-        <!-- Cart Sidebar -->
+        <!-- Cart Sidebar mobile effect -->
         <div id="cart"
             class="hidden fixed top-0 right-0 w-full xs:w-80 max-w-[90vw] h-full transform translate-x-full transition-transform duration-300 ease-in-out z-50 border-l-4 shadow-2xl rounded-l-2xl overflow-hidden flex flex-col">
             <div
@@ -253,7 +253,7 @@
             </div>
         </div>
 
-        <!-- Mobile Hand Toggle Button -->
+        <!-- mobile btn -->
         <button id="mobileHandToggle"
             class="sm:hidden fixed bottom-16 right-4 z-30 flex items-center gap-2 px-3 py-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors touch-target">
             <span class="material-symbols-outlined">playing_cards</span>
@@ -437,45 +437,32 @@
                     </div>
                 </div>
 
-                <!-- Player Hand (Mobile - Hidden by default, shown when toggled) -->
-                <!-- Player Hand (Mobile - Hidden by default, shown when toggled) -->
-<div id="mobileHandSection"
-    class="sm:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
-    <div
-        class="absolute bottom-0 left-0 right-0 bg-gray-800/95 transform translate-y-full transition-transform duration-300 ease-in-out rounded-t-2xl border-t border-white/10 p-4 max-h-[70vh]">
-        <div class="flex items-center justify-between mb-4">
-            <h2 class="text-white font-bold text-lg">Your Hand</h2>
-            <button id="mobileHandClose"
-                class="text-white bg-red-500 hover:bg-red-600 rounded-full p-2 transition-colors touch-target">
-                <span class="material-symbols-outlined text-xl">close</span>
-            </button>
-        </div>
-        <div id="mobile_hand"
-            class="flex gap-3 pb-3 overflow-x-auto custom-scrollbar rounded-xl border border-dashed border-white/20 bg-white/5 p-3 min-h-[120px]">
-            <!-- Mobile hand cards will be synced here -->
-            <div class="text-gray-400 italic text-sm flex items-center justify-center min-w-[100px]">
-                No cards in hand
-            </div>
-        </div>
-    </div>
-</div>
+                <div id="mobileHandSection"
+                    class="sm:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
+                    <div
+                        class="absolute bottom-0 left-0 right-0 bg-gray-800/95 transform translate-y-full transition-transform duration-300 ease-in-out rounded-t-2xl border-t border-white/10 p-4 max-h-[70vh]">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-white font-bold text-lg">Your Hand</h2>
+                            <button id="mobileHandClose"
+                                class="text-white bg-red-500 hover:bg-red-600 rounded-full p-2 transition-colors touch-target">
+                                <span class="material-symbols-outlined text-xl">close</span>
+                            </button>
+                        </div>
+                        <div id="mobile_hand"
+                            class="flex gap-3 pb-3 overflow-x-auto custom-scrollbar rounded-xl border border-dashed border-white/20 bg-white/5 p-3 min-h-[120px]">
+                            <!-- Mobile hand cards will be synced here -->
+                            <div class="text-gray-400 italic text-sm flex items-center justify-center min-w-[100px]">
+                                No cards in hand
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Popup Container -->
                 <div id="popup" class=""></div>
-                <!-- Popup-victory Container -->
-                <div id="popup-victory" class=""></div>
+               
 
-                <!-- Game Stats Mobile -->
-                <div class="grid grid-cols-2 gap-3 sm:hidden mt-4">
-                    <div class="bg-white/10 rounded-lg p-3 text-center backdrop-blur-sm">
-                        <div class="text-white text-xs">Deck</div>
-                        <div id="deck-count" class="text-white font-bold text-sm">30</div>
-                    </div>
-                    <div class="bg-white/10 rounded-lg p-3 text-center backdrop-blur-sm">
-                        <div class="text-white text-xs">Hand</div>
-                        <div id="hand-count" class="text-white font-bold text-sm">0</div>
-                    </div>
-                </div>
+                
             </main>
         </div>
 
@@ -555,27 +542,27 @@
 
     <script>
         // Mobile Hand Toggle Functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const mobileHandToggle = document.getElementById('mobileHandToggle');
             const mobileHandSection = document.getElementById('mobileHandSection');
             const mobileHandClose = document.getElementById('mobileHandClose');
 
             // Toggle mobile hand section
-            mobileHandToggle.addEventListener('click', function() {
+            mobileHandToggle.addEventListener('click', function () {
                 mobileHandSection.classList.remove('opacity-0', 'pointer-events-none');
                 mobileHandSection.classList.add('opacity-100', 'pointer-events-auto');
                 mobileHandSection.querySelector('div').classList.remove('translate-y-full');
             });
 
             // Close mobile hand section
-            mobileHandClose.addEventListener('click', function() {
+            mobileHandClose.addEventListener('click', function () {
                 mobileHandSection.classList.add('opacity-0', 'pointer-events-none');
                 mobileHandSection.classList.remove('opacity-100', 'pointer-events-auto');
                 mobileHandSection.querySelector('div').classList.add('translate-y-full');
             });
 
             // Close mobile hand section when clicking outside
-            mobileHandSection.addEventListener('click', function(e) {
+            mobileHandSection.addEventListener('click', function (e) {
                 if (e.target === mobileHandSection) {
                     mobileHandSection.classList.add('opacity-0', 'pointer-events-none');
                     mobileHandSection.classList.remove('opacity-100', 'pointer-events-auto');
@@ -591,7 +578,7 @@
     <script src="js/market.js"></script>
     <script src="js/mydeck.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    
+
 </body>
 
 </html>
