@@ -4,6 +4,7 @@ const myHand = document.getElementById("my_hand");
 const arena = document.getElementsByClassName("my_section");
 const opponnent = document.getElementsByClassName("opp_section");
 let myHandCards = JSON.parse(localStorage.getItem("myHandCards")) || [];
+let audioStart = new Audio("../assets/videoplayback.m4a");
 let oppCardIdHolder = null;
 let myCardIdHolder = null;
 let selectedCard = null;
@@ -101,8 +102,10 @@ function drawCard() {
 
     localStorage.setItem("myDeck", JSON.stringify(myDecks));
     localStorage.setItem("myHandCards", JSON.stringify(myHandCards));
-
+    audioStart.muted = false;
+    audioStart.play();
     generateMyHandCards();
+    audioStart.play();
 }
 function setupDragAndDrop() {
     selectedCard = null;
@@ -121,8 +124,8 @@ function setupDragAndDrop() {
             e.preventDefault();
             if (!selectedCard) return;
 
-            if (el.children.length > 1) {
-                alert("3amra!");
+            if (el.children.length > 0) {
+                alert("THis place is occupied");
                 return;
             }
             el.appendChild(selectedCard);
@@ -135,14 +138,14 @@ function setupDragAndDrop() {
             console.log(myCardIdHolder);
 
             selectedCard = null;
-            let audio = new Audio("../assets/cardDropSoundEffects.m4a");
-            audio.play();
+            
 
         });
     }
 
 }
 document.addEventListener("DOMContentLoaded", generateMyHandCards);
+
 function chooseMode(cardId) {
     const popup = document.getElementById("popup");
     let randomIndex = Math.floor(Math.random() * 5);
@@ -351,44 +354,115 @@ let pt = document.getElementById("life-point");
 let ptMob = document.getElementById("life-point-mobile");
 pt.innerHTML = `${LF} LF`;
 ptMob.innerHTML = `${LF} LF`;
+let myHp = 0;
+let oppHp = 0;
+let myHpSpan = document.getElementById("my-hp");
+let oppHpSpan = document.getElementById("opp-hp");
+let popupVictory = document.getElementById("popup-victory");
 function calculateScore(myCardId, oppCardId) {
-    // myHandCards = JSON.parse(localStorage.getItem("myHandCards"));
-
-    // JSON.stringify(myHandCards);
     let oppCard = opponentCards.find((card) => card.id === oppCardId);
     let myCard = myDecks.find((card) => card.id === myCardId);
-    if (!oppCard) {
-        console.log("Opponent card not found!");
-        return;
-    }
-    if (!myCard) {
-        console.log(myHandCards); //test
 
-        console.log("My card not found!");
+    if (!oppCard || !myCard) {
+        console.log("Card not found!");
         return;
     }
+
+    let roundWinner = null;
 
     if (myCard.hp > oppCard.hp) {
+        roundWinner = 'player';
         LF += 10;
-        pt.innerHTML = `${LF} LF`;
-        ptMob.innerHTML = `${LF} LF`;
-
+        oppHp -= 50;
         Toastify({ text: "You won this round!", duration: 2000, position: "center" }).showToast();
-    } else if (myCard.hp == oppCard.hp) {
-        LF += 0;
-        pt.innerHTML = `${LF} LF`;
-        ptMob.innerHTML = `${LF} LF`;
-
-        Toastify({ text: "You got equal HP", duration: 2000, position: "center" }).showToast();
-    } else {
+    } else if (myCard.hp < oppCard.hp) {
+        roundWinner = 'opponent';
         LF -= 5;
-        pt.innerHTML = `${LF} LF`;
-        ptMob.innerHTML = `${LF} LF`;
-
+        myHp -= 50;
         Toastify({ text: "You lost this round!", duration: 2000, position: "center" }).showToast();
+    } else {
+        roundWinner = 'draw';
+        Toastify({ text: "You got equal HP", duration: 2000, position: "center" }).showToast();
     }
 
-    console.log("in calculate function");
+    pt.innerHTML = `${LF} LF`;
+    ptMob.innerHTML = `${LF} LF`;
+    myHpSpan.innerHTML = `${myHp}`;
+    oppHpSpan.innerHTML = `${oppHp}`;
+
+    let gameWinner = null;
+
+    if (myHp <= 0 && oppHp <= 0) {
+        gameWinner = 'draw';
+    } else if (myHp <= 0) {
+        gameWinner = 'opponent';
+    } else if (oppHp <= 0) {
+        gameWinner = 'player';
+    }
+
+    if (gameWinner) {
+        let message = "";
+        if (gameWinner === 'draw') {
+            message = "Game Over! It's a draw!";
+        } else if (gameWinner === 'player') {
+            message = "Congratulations! You won the game!";
+        } else {
+            message = "Game Over! You lost the game!";
+        }
+
+        Toastify({
+            text: message,
+            duration: 4000,
+            position: "center",
+            backgroundColor: gameWinner === 'player' ? "#4CAF50" : gameWinner === 'opponent' ? "#f44336" : "#FF9800"
+        }).showToast();
+
+        disableGameplay();
+
+        console.log(`Game Over! Winner: ${gameWinner}`);
+        console.log(`Final Score - Player HP: ${myHp}, Opponent HP: ${oppHp}, LF: ${LF}`);
+    } else {
+        console.log(`Round Result: ${roundWinner} | Player HP: ${myHp}, Opponent HP: ${oppHp}`);
+    }
+    if (arena.length == 5) {
+        console.log("game over");
+    }
+}
+
+
+
+function victory(myHp, oppHp) {
+    if (myHp > oppHp) {
+        popupVictory.innerHTML = `
+            <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center w-80">
+                    <h2 class="font-semibold text-lg mb-4">Choose your action</h2>
+                    <div class="flex justify-center gap-4 mb-4">
+                    <button id="attackBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                        Attack
+                    </button>
+                    <button id="defenseBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                        Defense
+                    </button>
+                </div>
+                
+            </div>
+            </div>
+        
+
+        `
+    }
+}
+//added some animation to the arena
+
+function disableGameplay() {
+    document.querySelectorAll('.card').forEach(card => {
+        card.style.pointerEvents = 'none';
+        card.style.opacity = '0.6';
+    });
+
+    const restartBtn = document.getElementById('restart-btn');
+    if (restartBtn) restartBtn.style.display = 'block';
 }
 
 const attackBtn = document.getElementById("attackBtnPt");
@@ -458,3 +532,8 @@ attackBtnMob.addEventListener('click', () => {
         audioAttack.play();
     }
 });
+
+
+window.addEventListener('reload', audioStart.play());
+window.addEventListener('load', audioStart.play());
+// window.addEventListener('click', audioStart.play());
