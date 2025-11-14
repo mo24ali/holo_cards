@@ -331,47 +331,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const list = document.getElementById("cart-items");
 
-function updateCartDisplay() {
-    list.innerHTML = "";
-    cart.forEach(item => {
-        let li = document.createElement("li");
-        li.innerHTML = `
-        <div id="card-id-${item.id}" class="flex items-center gap-3 p-2 border border-black/10 rounded-lg bg-white shadow-sm dark:border-white/10 dark:bg-dark-slate">
-            <!-- Image -->
-            <div class="w-16 h-20 flex-shrink-0 rounded-lg bg-cover bg-center"
-                style="background-image: url('${item.img_url}');">
-            </div>
-            <!-- Info -->
-            <div class="flex-1 flex flex-col justify-between h-full">
-                <div class="flex justify-between items-start">
-                    <h3 class="text-sm font-semibold text-black  truncate">${item.name}</h3>
-                    <div class="flex items-center gap-1">
-                        <span class="text-xs font-medium text-red-500">HP</span>
-                        <span class="text-sm font-bold text-black ">${item.hp}</span>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-center mt-1">
-                    <p class="text-sm font-bold text-primary">QT: ${item.quantity}</p>
-
-                    <p class="text-sm font-bold text-primary">$${item.price}</p>
-                    <button onclick="removeFromCart(${item.id})" 
-                        class="flex h-7 w-7 items-center justify-center rounded-full bg-[#b72626] text-white text-sm hover:bg-[#b96923]/90 transition">
-                        <span class="material-symbols-outlined text-sm">delete</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    `;
-        list.appendChild(li);
-    });
-    let cartCounter = document.getElementById("cartCounter");
-    cartCounter.innerHTML = cart.length;
-    console.log(cart.length);
-    updateTotalPrice();
-}
-
 document.addEventListener("DOMContentLoaded", updateCartDisplay);
 
 let cartTotal = document.getElementById("cart-total");
@@ -434,7 +393,7 @@ function decrement(item) {
     let search = cart.find(x => x.id === item.id);
     if (!search) return;
 
-    if (search.quantity >= 1) {
+    if (search.quantity > 1) {
         search.quantity -= 1;
         counterPrice -= search.price; //still a problem with the decrementation of the total price 
         cartTotal.innerHTML = counterPrice;
@@ -495,6 +454,7 @@ function addToFavorite(itemId) {
     localStorage.setItem("favorite", JSON.stringify(favorite));
     console.log(`Added ${item.name} to favorites`);
 }
+
 //clicking the checkout button to add the buyed cards to the mydaeck page
 
 const btnCheckout = document.getElementById("btnCheckout");
@@ -509,17 +469,20 @@ if (btnCheckout) {
         }
 
         let myDeck = JSON.parse(localStorage.getItem("myDeck")) || [];
-
         myDeck = [...myDeck, ...cart];
 
         localStorage.setItem("myDeck", JSON.stringify(myDeck));
-
         localStorage.removeItem("cart");
+        
+        // Update cart display to show empty state
         updateCartDisplay();
 
-        console.log(" Checkout complete. Cards added to MyDeck:", myDeck);
+        console.log("Checkout complete. Cards added to MyDeck:", myDeck);
 
-      
+        // Redirect to MyDeck page
+        setTimeout(() => {
+            window.location.href = "myDeck.html";
+        }, 500);
     });
 }
 
@@ -531,11 +494,84 @@ if (btnWithdraw) {
             return;
         }
 
+        // Remove cart from localStorage
         localStorage.removeItem("cart");
+        
+        // Force update the cart display to show empty state
         updateCartDisplay();
+        
         console.log("Cart withdrawn (cleared).");
+        alert("All items have been removed from your cart!");
     });
 }
+
+function updateCartDisplay() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const list = document.getElementById("cart-items");
+    const cartCounter = document.getElementById("cartCounter");
+    const cartTotal = document.getElementById("cart-total");
+
+    if (list) {
+        list.innerHTML = "";
+        
+        if (cart.length === 0) {
+            list.innerHTML = `
+                <li class="text-center py-8 text-gray-400">
+                    <span class="material-symbols-outlined text-4xl mb-2">shopping_cart</span>
+                    <p>Your cart is empty</p>
+                </li>
+            `;
+        } else {
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                li.innerHTML = `
+                <div id="card-id-${item.id}" class="flex items-center gap-3 p-2 border border-black/10 rounded-lg bg-white shadow-sm dark:border-white/10 dark:bg-dark-slate">
+                    <!-- Image -->
+                    <div class="w-16 h-20 flex-shrink-0 rounded-lg bg-cover bg-center"
+                        style="background-image: url('${item.img_url}');">
+                    </div>
+                    <!-- Info -->
+                    <div class="flex-1 flex flex-col justify-between h-full">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-sm font-semibold text-black truncate">${item.name}</h3>
+                            <div class="flex items-center gap-1">
+                                <span class="text-xs font-medium text-red-500">HP</span>
+                                <span class="text-sm font-bold text-black">${item.hp}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-1">
+                            <p class="text-sm font-bold text-primary">QT: ${item.quantity}</p>
+                            <p class="text-sm font-bold text-primary">$${item.price}</p>
+                            <button onclick="removeFromCart(${item.id})" 
+                                class="flex h-7 w-7 items-center justify-center rounded-full bg-[#b72626] text-white text-sm hover:bg-[#b96923]/90 transition">
+                                <span class="material-symbols-outlined text-sm">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+    }
+
+    if (cartCounter) {
+        cartCounter.textContent = cart.length;
+    }
+
+    if (cartTotal) {
+        const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+        cartTotal.textContent = total.toFixed(2);
+    }
+    
+    console.log("Cart updated. Items:", cart.length);
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    updateCartDisplay();
+});
 //rarity filtergs
 const rarityCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 function applyRarityFilter() {
@@ -580,18 +616,12 @@ rarityCheckboxes.forEach(checkbox => {
     });
 });
 
-
-
-
 applyRarityFilter();
-//pagination logic
 
+//pagination logic
 let currentPage = 1;
 const cardsPerPage = 6; 
 let filteredContent = []; 
-
-
-
 applyPagination();
 
 
